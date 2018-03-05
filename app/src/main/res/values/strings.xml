@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Calculation Learner</string>
+    <string name="welcome">Welcome To Calculation Learner.</string>
 </resources>
