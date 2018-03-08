@@ -14,7 +14,7 @@ class TestSeriesActivity : AppCompatActivity() {
 
         val whtsoptionvalue=intent.getStringExtra("categoryvalue")
 
-        listview?.adapter = TestAdapter(this,generateData(whtsoptionvalue))
+        listview_series?.adapter = TestAdapter(this,generateData(whtsoptionvalue))
 
     }
 

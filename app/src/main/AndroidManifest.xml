@@ -19,7 +19,8 @@
         <activity android:name=".CategoryActivity" />
         <activity android:name=".TestSeriesActivity" />
         <activity android:name=".OptionActivity" />
-        <activity android:name=".OptionsActivity"></activity>
+        <activity android:name=".OptionsActivity" />
+        <activity android:name=".TestRandomActivity"></activity>
     </application>
 
 </manifest>

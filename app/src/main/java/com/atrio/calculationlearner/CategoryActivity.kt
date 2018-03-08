@@ -34,5 +34,26 @@ class CategoryActivity : AppCompatActivity() {
             intent.putExtra("categoryvalue","/")
             startActivity(intent)
         })
+
+        btn_addr.setOnClickListener(View.OnClickListener {
+            intent=Intent(this@CategoryActivity,TestRandomActivity::class.java)
+            intent.putExtra("categoryvalue","+")
+            startActivity(intent)
+        })
+        btn_subr.setOnClickListener(View.OnClickListener {
+            intent=Intent(this@CategoryActivity,TestRandomActivity::class.java)
+            intent.putExtra("categoryvalue","-")
+            startActivity(intent)
+        })
+        btn_mulr.setOnClickListener(View.OnClickListener {
+            intent=Intent(this@CategoryActivity,TestRandomActivity::class.java)
+            intent.putExtra("categoryvalue","*")
+            startActivity(intent)
+        })
+        btn_divr.setOnClickListener(View.OnClickListener {
+            intent=Intent(this@CategoryActivity,TestRandomActivity::class.java)
+            intent.putExtra("categoryvalue","/")
+            startActivity(intent)
+        })
     }
 }
