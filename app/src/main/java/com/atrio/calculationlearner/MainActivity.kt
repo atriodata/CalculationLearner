@@ -16,5 +16,9 @@ class MainActivity : AppCompatActivity() {
             intent= Intent(this,CategoryActivity::class.java)
             startActivity(intent)
         })
+        btn_practice.setOnClickListener(View.OnClickListener {
+            intent= Intent(this,PractiseActivity::class.java)
+            startActivity(intent)
+        })
     }
 }
