@@ -13,12 +13,14 @@ class PractiseActivity : AppCompatActivity() {
     var corrctans : String? = null
     var no : Int = 1
     var qno : String? = null
-
+    var whtsoptionvalue:String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_practise)
         rootRef = FirebaseDatabase.getInstance().reference
+
+        whtsoptionvalue = intent.getStringExtra("categoryvalue")
 
         bt_nxt.setOnClickListener(View.OnClickListener {
             radioGroup.clearCheck()
@@ -36,12 +38,36 @@ class PractiseActivity : AppCompatActivity() {
 
             no++
             qno = "Question-${String.format("%03d",no)}"
-            Log.i("qno11",""+qno)
-            getData(qno)
+            when(whtsoptionvalue){
+                "Addition" ->{
+                    Log.i("qno11",""+qno)
+                    getData(qno,"Addition")
+                }
+                "substraction"->{
+                    getData(qno,"substraction")
+                }
+                "RandomAddition"->{
+                    getData(qno,"RandomAddition")
+
+                }
+            }
         })
         qno = "Question-${String.format("%03d",no)}"
-        Log.i("qno11",""+qno)
-        getData(qno)
+
+        when(whtsoptionvalue){
+           "Addition" ->{
+               Log.i("qno11",""+qno)
+               getData(qno,"Addition")
+           }
+            "substraction"->{
+                getData(qno,"substraction")
+            }
+            "RandomAddition"->{
+                getData(qno,"RandomAddition")
+
+            }
+        }
+
         radioGroup.setOnCheckedChangeListener { group, checkedId ->
 
 
@@ -133,8 +159,8 @@ class PractiseActivity : AppCompatActivity() {
         }
     }
 
-    private fun getData(qno: String?) {
-        val query_catlist = rootRef.child("QuesttionList").child("Addition").child(qno).orderByKey()
+    private fun getData(qno: String?, value: String?) {
+        val query_catlist = rootRef.child("QuesttionList").child(value).child(qno).orderByKey()
         Log.i("query_catlist33",""+query_catlist.ref.toString())
         query_catlist.addListenerForSingleValueEvent(object: ValueEventListener{
             override fun onCancelled(p0: DatabaseError?) {
