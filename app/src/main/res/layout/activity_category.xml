@@ -6,65 +6,194 @@
     android:layout_height="match_parent"
     tools:context="com.atrio.calculationlearner.CategoryActivity">
 
-    <Button
-        android:id="@+id/btn_add"
+
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/button_bg"
-        android:text="addition"
-        app:layout_constraintBottom_toTopOf="@+id/btn_sub"
+        android:text="SERIES"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/series_card"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btn_sub"
+    <!--  <include
+          android:id="@+id/series_card"
+          layout="@layout/card_layout"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="8dp"
+          app:layout_constraintBottom_toTopOf="@+id/textView2"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/textView" />-->
+    <android.support.v7.widget.CardView
+        android:id="@+id/series_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:background="@drawable/button_bg"
-        android:text="subtraction"
-        app:layout_constraintBottom_toTopOf="@+id/btn_mul"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        app:cardElevation="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_add" />
+        app:layout_constraintTop_toBottomOf="@id/textView">
 
-    <Button
-        android:id="@+id/btn_mul"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_adds"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/num_btn"
+                android:drawableRight="@drawable/addition"
+                android:paddingRight="15dp"
+                android:text="addition" />
+
+            <Button
+                android:id="@+id/btn_subs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/num_btn"
+                android:drawableRight="@drawable/subtract"
+                android:paddingRight="15dp"
+                android:text="subtraction" />
+
+            <Button
+                android:id="@+id/btn_muls"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/num_btn"
+                android:drawableRight="@drawable/multiplication"
+                android:paddingRight="15dp"
+                android:text="multiplication" />
+
+            <Button
+                android:id="@+id/btn_divs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/num_btn"
+                android:drawableRight="@drawable/division"
+                android:paddingRight="15dp"
+                android:text="division" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:background="@drawable/button_bg"
-        android:text="multiplication"
-        app:layout_constraintBottom_toTopOf="@+id/btn_div"
+        android:text="RANDOM"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/random_card"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_sub" />
+        app:layout_constraintTop_toBottomOf="@id/series_card" />
 
-    <Button
-        android:id="@+id/btn_div"
+    <!--  <include
+          android:id="@+id/random_card"
+          layout="@layout/card_layout"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="8dp"
+          app:layout_constraintBottom_toBottomOf="parent"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintTop_toBottomOf="@id/textView2"
+          app:layout_constraintStart_toStartOf="parent" />-->
+    <android.support.v7.widget.CardView
+        android:id="@+id/random_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:background="@drawable/button_bg"
-        android:text="division"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        app:cardElevation="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_mul" />
+        app:layout_constraintTop_toBottomOf="@id/textView2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btn_addr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/num_btn"
+                android:drawableRight="@drawable/addition"
+                android:paddingRight="15dp"
+                android:text="addition" />
+
+            <Button
+                android:id="@+id/btn_subr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/num_btn"
+                android:drawableRight="@drawable/subtract"
+                android:paddingRight="15dp"
+                android:text="subtraction" />
+
+            <Button
+                android:id="@+id/btn_mulr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/num_btn"
+                android:drawableRight="@drawable/multiplication"
+                android:paddingRight="15dp"
+                android:text="multiplication" />
+
+            <Button
+                android:id="@+id/btn_divr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/num_btn"
+                android:drawableRight="@drawable/division"
+                android:paddingRight="15dp"
+                android:text="division" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
 
 </android.support.constraint.ConstraintLayout>
