@@ -1,39 +1,28 @@
 package com.atrio.calculationlearner
 
-import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.view.View
 import com.atrio.calculationlearner.model.Practice
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_practise.*
-import java.util.*
 
 class PractiseActivity : AppCompatActivity() {
-
     lateinit var rootRef: DatabaseReference
     var corrctans : String? = null
     var no : Int = 1
     var qno : String? = null
-
-
-    var tts: TextToSpeech? = null
-
+    var whtsoptionvalue:String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_practise)
         rootRef = FirebaseDatabase.getInstance().reference
 
-        bt_nxt.setOnClickListener(View.OnClickListener {
-          /*  var text:String=tv_ques.text.toString()
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                this.tts!!.speak(text, TextToSpeech.QUEUE_FLUSH, null,"")
-                this.tts!!.setSpeechRate(0.7f)
-            }*/
+        whtsoptionvalue = intent.getStringExtra("categoryvalue")
 
+        bt_nxt.setOnClickListener(View.OnClickListener {
             radioGroup.clearCheck()
             rd_opt1.setTextColor(resources.getColor(android.R.color.black))
             rd_opt2.setTextColor(resources.getColor(android.R.color.black))
@@ -44,14 +33,41 @@ class PractiseActivity : AppCompatActivity() {
             rd_opt3.setClickable(true)
             rd_opt4.setClickable(true)
 
+
+
+
             no++
             qno = "Question-${String.format("%03d",no)}"
-            Log.i("qno11",""+qno)
-            getData(qno)
+            when(whtsoptionvalue){
+                "Addition" ->{
+                    Log.i("qno11",""+qno)
+                    getData(qno,"Addition")
+                }
+                "substraction"->{
+                    getData(qno,"substraction")
+                }
+                "RandomAddition"->{
+                    getData(qno,"RandomAddition")
+
+                }
+            }
         })
         qno = "Question-${String.format("%03d",no)}"
-        Log.i("qno11",""+qno)
-        getData(qno)
+
+        when(whtsoptionvalue){
+           "Addition" ->{
+               Log.i("qno11",""+qno)
+               getData(qno,"Addition")
+           }
+            "substraction"->{
+                getData(qno,"substraction")
+            }
+            "RandomAddition"->{
+                getData(qno,"RandomAddition")
+
+            }
+        }
+
         radioGroup.setOnCheckedChangeListener { group, checkedId ->
 
 
@@ -143,24 +159,8 @@ class PractiseActivity : AppCompatActivity() {
         }
     }
 
- /*   override fun onInit(status: Int) {
-        if (status == TextToSpeech.SUCCESS) {
-            val result = tts!!.setLanguage(Locale.US)
-
-            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                Log.e("TTS","The Language specified is not supported!")
-            } else {
-//                bt!!.isEnabled = true
-            }
-
-        } else {
-            Log.e("TTS", "Initilization Failed!")
-        }
-    }*/
-
-
-    private fun getData(qno: String?) {
-        val query_catlist = rootRef.child("QuesttionList").child("Addition").child(qno).orderByKey()
+    private fun getData(qno: String?, value: String?) {
+        val query_catlist = rootRef.child("QuesttionList").child(value).child(qno).orderByKey()
         Log.i("query_catlist33",""+query_catlist.ref.toString())
         query_catlist.addListenerForSingleValueEvent(object: ValueEventListener{
             override fun onCancelled(p0: DatabaseError?) {
@@ -196,19 +196,12 @@ class PractiseActivity : AppCompatActivity() {
     }
 
     private fun setData(question: String?, optionA: String?, optionB: String?, optionC: String?, optionD: String?) {
-        //tv_ques.setText(question)
+        tv_ques.setText(question)
         rd_opt1.setText(optionA)
         rd_opt2.setText(optionB)
         rd_opt3.setText(optionC)
         rd_opt4.setText(optionD)
 
 
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        if (tts!=null){
-            tts!!.shutdown()
-        }
     }
 }

@@ -9,51 +9,96 @@ import kotlinx.android.synthetic.main.activity_category.*
 
 
 class CategoryActivity : AppCompatActivity() {
-
+var sub :String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_category)
 
+        sub =intent.getStringExtra("sub")
         btn_adds.setOnClickListener(View.OnClickListener {
-            intent=Intent(this@CategoryActivity,TestSeriesActivity::class.java)
-            intent.putExtra("categoryvalue","+")
-            startActivity(intent)
+            if (sub.equals("test")){
+                intent=Intent(this@CategoryActivity,TestSeriesActivity::class.java)
+                intent.putExtra("categoryvalue","+")
+                startActivity(intent)
+            }else{
+                intent=Intent(this@CategoryActivity,ViewPager::class.java)
+                intent.putExtra("categoryvalue","+")
+                startActivity(intent)
+            }
+
         })
         btn_subs.setOnClickListener(View.OnClickListener {
-            intent=Intent(this@CategoryActivity,TestSeriesActivity::class.java)
-            intent.putExtra("categoryvalue","-")
-            startActivity(intent)
+            if (sub.equals("test")){
+                intent=Intent(this@CategoryActivity,TestSeriesActivity::class.java)
+                intent.putExtra("categoryvalue","-")
+                startActivity(intent)
+            }else{
+                intent=Intent(this@CategoryActivity,ViewPager::class.java)
+                intent.putExtra("categoryvalue","-")
+                startActivity(intent)
+            }
+
         })
         btn_muls.setOnClickListener(View.OnClickListener {
+            if (sub.equals("test"))
             intent=Intent(this@CategoryActivity,TestSeriesActivity::class.java)
             intent.putExtra("categoryvalue","*")
             startActivity(intent)
         })
         btn_divs.setOnClickListener(View.OnClickListener {
+            if (sub.equals("test"))
             intent=Intent(this@CategoryActivity,TestSeriesActivity::class.java)
             intent.putExtra("categoryvalue","/")
             startActivity(intent)
         })
 
         btn_addr.setOnClickListener(View.OnClickListener {
-            intent=Intent(this@CategoryActivity,TestRandomActivity::class.java)
-            intent.putExtra("categoryvalue","+")
-            startActivity(intent)
+            if (sub.equals("test")){
+                intent=Intent(this@CategoryActivity,TestRandomActivity::class.java)
+                intent.putExtra("categoryvalue","+")
+                startActivity(intent)
+            }else{
+                intent=Intent(this@CategoryActivity,PractiseActivity::class.java)
+                intent.putExtra("categoryvalue","RandomAddition")
+                startActivity(intent)
+            }
+
         })
         btn_subr.setOnClickListener(View.OnClickListener {
-            intent=Intent(this@CategoryActivity,TestRandomActivity::class.java)
-            intent.putExtra("categoryvalue","-")
-            startActivity(intent)
+            if (sub.equals("test")){
+                intent=Intent(this@CategoryActivity,TestRandomActivity::class.java)
+                intent.putExtra("categoryvalue","-")
+                startActivity(intent)
+            }else{
+                intent=Intent(this@CategoryActivity,PractiseActivity::class.java)
+                intent.putExtra("categoryvalue","-")
+                startActivity(intent)
+            }
+
         })
         btn_mulr.setOnClickListener(View.OnClickListener {
-            intent=Intent(this@CategoryActivity,TestRandomActivity::class.java)
-            intent.putExtra("categoryvalue","*")
-            startActivity(intent)
+            if (sub.equals("test")){
+                intent=Intent(this@CategoryActivity,TestRandomActivity::class.java)
+                intent.putExtra("categoryvalue","*")
+                startActivity(intent)
+            }else{
+                intent=Intent(this@CategoryActivity,PractiseActivity::class.java)
+                intent.putExtra("categoryvalue","*")
+                startActivity(intent)
+            }
+
         })
         btn_divr.setOnClickListener(View.OnClickListener {
-            intent=Intent(this@CategoryActivity,TestRandomActivity::class.java)
-            intent.putExtra("categoryvalue","/")
-            startActivity(intent)
+            if (sub.equals("test")){
+                intent=Intent(this@CategoryActivity,TestRandomActivity::class.java)
+                intent.putExtra("categoryvalue","/")
+                startActivity(intent)
+            }else{
+                intent=Intent(this@CategoryActivity,PractiseActivity::class.java)
+                intent.putExtra("categoryvalue","/")
+                startActivity(intent)
+            }
+
         })
     }
 }
