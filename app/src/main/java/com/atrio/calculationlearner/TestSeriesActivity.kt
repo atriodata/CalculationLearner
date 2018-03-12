@@ -13,7 +13,6 @@ class TestSeriesActivity : AppCompatActivity() {
         setContentView(R.layout.activity_test_series)
 
         val whtsoptionvalue=intent.getStringExtra("categoryvalue")
-
         listview_series?.adapter = TestAdapter(this,generateData(whtsoptionvalue))
 
     }
