@@ -21,8 +21,8 @@ var sub :String? = null
                 intent.putExtra("categoryvalue","+")
                 startActivity(intent)
             }else{
-                intent=Intent(this@CategoryActivity,PractiseActivity::class.java)
-                intent.putExtra("categoryvalue","Addition")
+                intent=Intent(this@CategoryActivity,ViewPager::class.java)
+                intent.putExtra("categoryvalue","+")
                 startActivity(intent)
             }
 
@@ -33,8 +33,8 @@ var sub :String? = null
                 intent.putExtra("categoryvalue","-")
                 startActivity(intent)
             }else{
-                intent=Intent(this@CategoryActivity,PractiseActivity::class.java)
-                intent.putExtra("categoryvalue","substraction")
+                intent=Intent(this@CategoryActivity,ViewPager::class.java)
+                intent.putExtra("categoryvalue","-")
                 startActivity(intent)
             }
 

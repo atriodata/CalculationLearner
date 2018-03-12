@@ -12,14 +12,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        btn_test.setOnClickListener(View.OnClickListener {
-            intent= Intent(this,CategoryActivity::class.java)
-            intent.putExtra("sub","test")
-            startActivity(intent)
-        })
         btn_practice.setOnClickListener(View.OnClickListener {
             intent= Intent(this,CategoryActivity::class.java)
             intent.putExtra("sub","practice")
+            startActivity(intent)
+        })
+        btn_test.setOnClickListener(View.OnClickListener {
+            intent= Intent(this,CategoryActivity::class.java)
+            intent.putExtra("sub","test")
             startActivity(intent)
         })
     }

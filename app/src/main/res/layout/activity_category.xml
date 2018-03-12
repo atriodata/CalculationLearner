@@ -59,7 +59,8 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/num_btn"
+                android:textColor="@color/white"
+                android:background="@drawable/button_bg"
                 android:drawableRight="@drawable/addition"
                 android:paddingRight="15dp"
                 android:text="addition" />
@@ -71,7 +72,8 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/num_btn"
+                android:textColor="@color/white"
+                android:background="@drawable/button_bg"
                 android:drawableRight="@drawable/subtract"
                 android:paddingRight="15dp"
                 android:text="subtraction" />
@@ -80,10 +82,11 @@
                 android:id="@+id/btn_muls"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/num_btn"
+                android:background="@drawable/button_bg"
                 android:drawableRight="@drawable/multiplication"
                 android:paddingRight="15dp"
                 android:text="multiplication" />
@@ -95,7 +98,8 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/num_btn"
+                android:textColor="@color/white"
+                android:background="@drawable/button_bg"
                 android:drawableRight="@drawable/division"
                 android:paddingRight="15dp"
                 android:text="division" />
@@ -151,21 +155,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
+                android:textColor="@color/white"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/num_btn"
+                android:background="@drawable/button_bg"
                 android:drawableRight="@drawable/addition"
                 android:paddingRight="15dp"
                 android:text="addition" />
 
             <Button
                 android:id="@+id/btn_subr"
+                android:textColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/num_btn"
+                android:background="@drawable/button_bg"
                 android:drawableRight="@drawable/subtract"
                 android:paddingRight="15dp"
                 android:text="subtraction" />
@@ -177,7 +183,8 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/num_btn"
+                android:background="@drawable/button_bg"
+                android:textColor="@color/white"
                 android:drawableRight="@drawable/multiplication"
                 android:paddingRight="15dp"
                 android:text="multiplication" />
@@ -189,7 +196,8 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="8dp"
-                android:background="@drawable/num_btn"
+              android:textColor="@color/white"
+                android:background="@drawable/button_bg"
                 android:drawableRight="@drawable/division"
                 android:paddingRight="15dp"
                 android:text="division" />
