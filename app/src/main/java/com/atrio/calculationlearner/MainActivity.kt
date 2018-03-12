@@ -12,11 +12,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        btn_test.setOnClickListener(View.OnClickListener {
+        btn_learn.setOnClickListener(View.OnClickListener {
             intent= Intent(this,CategoryActivity::class.java)
             startActivity(intent)
         })
-        btn_practice.setOnClickListener(View.OnClickListener {
+        btn_test.setOnClickListener(View.OnClickListener {
             intent= Intent(this,PractiseActivity::class.java)
             startActivity(intent)
         })
