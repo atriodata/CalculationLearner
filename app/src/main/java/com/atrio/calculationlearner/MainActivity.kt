@@ -14,10 +14,12 @@ class MainActivity : AppCompatActivity() {
 
         btn_learn.setOnClickListener(View.OnClickListener {
             intent= Intent(this,CategoryActivity::class.java)
+            intent.putExtra("sub","learn")
             startActivity(intent)
         })
         btn_test.setOnClickListener(View.OnClickListener {
-            intent= Intent(this,PractiseActivity::class.java)
+            intent= Intent(this,CategoryActivity::class.java)
+            intent.putExtra("sub","test")
             startActivity(intent)
         })
     }

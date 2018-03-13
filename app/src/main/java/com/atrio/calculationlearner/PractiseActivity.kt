@@ -22,6 +22,12 @@ class PractiseActivity : AppCompatActivity() {
 
         whtsoptionvalue = intent.getStringExtra("categoryvalue")
 
+        Log.i("value11",""+whtsoptionvalue)
+        qno = "Question-${String.format("%03d",no)}"
+
+                Log.i("qno11",""+qno)
+                getData(qno,whtsoptionvalue)
+
         bt_nxt.setOnClickListener(View.OnClickListener {
             radioGroup.clearCheck()
             rd_opt1.setTextColor(resources.getColor(android.R.color.black))
@@ -33,40 +39,12 @@ class PractiseActivity : AppCompatActivity() {
             rd_opt3.setClickable(true)
             rd_opt4.setClickable(true)
 
-
-
-
             no++
             qno = "Question-${String.format("%03d",no)}"
-            when(whtsoptionvalue){
-                "Addition" ->{
-                    Log.i("qno11",""+qno)
-                    getData(qno,"Addition")
-                }
-                "substraction"->{
-                    getData(qno,"substraction")
-                }
-                "RandomAddition"->{
-                    getData(qno,"RandomAddition")
-
-                }
-            }
+            getData(qno,whtsoptionvalue)
         })
-        qno = "Question-${String.format("%03d",no)}"
 
-        when(whtsoptionvalue){
-           "Addition" ->{
-               Log.i("qno11",""+qno)
-               getData(qno,"Addition")
-           }
-            "substraction"->{
-                getData(qno,"substraction")
-            }
-            "RandomAddition"->{
-                getData(qno,"RandomAddition")
 
-            }
-        }
 
         radioGroup.setOnCheckedChangeListener { group, checkedId ->
 
@@ -196,7 +174,19 @@ class PractiseActivity : AppCompatActivity() {
     }
 
     private fun setData(question: String?, optionA: String?, optionB: String?, optionC: String?, optionD: String?) {
-        tv_ques.setText(question)
+      //  tv_ques.setText(question)
+        when(question){
+            "Addition"-> {
+
+                var obj = arrayOf(question?.split("+"))
+                Log.i("objvalue11",""+obj[0])
+                Log.i("objvalue11",""+obj[1])
+
+            }
+
+        }
+
+       // question.split("+")
         rd_opt1.setText(optionA)
         rd_opt2.setText(optionB)
         rd_opt3.setText(optionC)

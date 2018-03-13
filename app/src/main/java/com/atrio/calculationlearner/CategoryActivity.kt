@@ -16,45 +16,57 @@ var sub :String? = null
 
         sub =intent.getStringExtra("sub")
         btn_adds.setOnClickListener(View.OnClickListener {
-            if (sub.equals("test")){
-                intent=Intent(this@CategoryActivity,TestSeriesActivity::class.java)
-                intent.putExtra("categoryvalue","+")
-                startActivity(intent)
-            }else{
+            if (sub.equals("learn")){
                 intent=Intent(this@CategoryActivity,ViewPager::class.java)
                 intent.putExtra("categoryvalue","+")
                 startActivity(intent)
+            }else{
+                intent=Intent(this@CategoryActivity,PractiseActivity::class.java)
+                intent.putExtra("categoryvalue","Addition")
+                startActivity(intent)
+
             }
 
         })
         btn_subs.setOnClickListener(View.OnClickListener {
-            if (sub.equals("test")){
-                intent=Intent(this@CategoryActivity,TestSeriesActivity::class.java)
-                intent.putExtra("categoryvalue","-")
-                startActivity(intent)
-            }else{
+            if (sub.equals("learn")){
                 intent=Intent(this@CategoryActivity,ViewPager::class.java)
                 intent.putExtra("categoryvalue","-")
                 startActivity(intent)
+            }else{
+                intent=Intent(this@CategoryActivity,PractiseActivity::class.java)
+                intent.putExtra("categoryvalue","substraction")
+                startActivity(intent)
+
             }
 
         })
         btn_muls.setOnClickListener(View.OnClickListener {
-            if (sub.equals("test"))
-            intent=Intent(this@CategoryActivity,TestSeriesActivity::class.java)
-            intent.putExtra("categoryvalue","*")
-            startActivity(intent)
+            if (sub.equals("learn")) {
+                intent = Intent(this@CategoryActivity, ViewPager::class.java)
+                intent.putExtra("categoryvalue", "*")
+                startActivity(intent)
+            }else{
+                intent = Intent(this@CategoryActivity, PractiseActivity::class.java)
+                intent.putExtra("categoryvalue", "Multipllication ")
+                startActivity(intent)
+            }
         })
         btn_divs.setOnClickListener(View.OnClickListener {
-            if (sub.equals("test"))
-            intent=Intent(this@CategoryActivity,TestSeriesActivity::class.java)
-            intent.putExtra("categoryvalue","/")
-            startActivity(intent)
+            if (sub.equals("learn")) {
+                intent = Intent(this@CategoryActivity, ViewPager::class.java)
+                intent.putExtra("categoryvalue", "/")
+                startActivity(intent)
+            }else{
+                intent = Intent(this@CategoryActivity, PractiseActivity::class.java)
+                intent.putExtra("categoryvalue", "Division")
+                startActivity(intent)
+            }
         })
 
         btn_addr.setOnClickListener(View.OnClickListener {
-            if (sub.equals("test")){
-                intent=Intent(this@CategoryActivity,TestRandomActivity::class.java)
+            if (sub.equals("learn")){
+                intent=Intent(this@CategoryActivity,ViewPager::class.java)
                 intent.putExtra("categoryvalue","+")
                 startActivity(intent)
             }else{
@@ -65,37 +77,37 @@ var sub :String? = null
 
         })
         btn_subr.setOnClickListener(View.OnClickListener {
-            if (sub.equals("test")){
-                intent=Intent(this@CategoryActivity,TestRandomActivity::class.java)
+            if (sub.equals("learn")){
+                intent=Intent(this@CategoryActivity,ViewPager::class.java)
                 intent.putExtra("categoryvalue","-")
                 startActivity(intent)
             }else{
                 intent=Intent(this@CategoryActivity,PractiseActivity::class.java)
-                intent.putExtra("categoryvalue","-")
+                intent.putExtra("categoryvalue","RANDDOMSUBTR")
                 startActivity(intent)
             }
 
         })
         btn_mulr.setOnClickListener(View.OnClickListener {
-            if (sub.equals("test")){
-                intent=Intent(this@CategoryActivity,TestRandomActivity::class.java)
+            if (sub.equals("learn")){
+                intent=Intent(this@CategoryActivity,ViewPager::class.java)
                 intent.putExtra("categoryvalue","*")
                 startActivity(intent)
             }else{
                 intent=Intent(this@CategoryActivity,PractiseActivity::class.java)
-                intent.putExtra("categoryvalue","*")
+                intent.putExtra("categoryvalue","RANDOMMULTI")
                 startActivity(intent)
             }
 
         })
         btn_divr.setOnClickListener(View.OnClickListener {
-            if (sub.equals("test")){
-                intent=Intent(this@CategoryActivity,TestRandomActivity::class.java)
+            if (sub.equals("learn")){
+                intent=Intent(this@CategoryActivity,ViewPager::class.java)
                 intent.putExtra("categoryvalue","/")
                 startActivity(intent)
             }else{
                 intent=Intent(this@CategoryActivity,PractiseActivity::class.java)
-                intent.putExtra("categoryvalue","/")
+                intent.putExtra("categoryvalue","Randomdivision")
                 startActivity(intent)
             }
 
