@@ -99,7 +99,6 @@ var sub :String? = null
                 startActivity(intent)
             }
 
-
         })
         btn_divr.setOnClickListener(View.OnClickListener {
             if (sub.equals("learn")){
