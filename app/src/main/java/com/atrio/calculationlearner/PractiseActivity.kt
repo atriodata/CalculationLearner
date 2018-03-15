@@ -14,6 +14,8 @@ class PractiseActivity : AppCompatActivity() {
     var no : Int = 1
     var qno : String? = null
     var whtsoptionvalue:String? = null
+    var data_number : String? = null
+    var data_number1 : String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +32,7 @@ class PractiseActivity : AppCompatActivity() {
 
         bt_nxt.setOnClickListener(View.OnClickListener {
             radioGroup.clearCheck()
+            rg_2.clearCheck()
             rd_opt1.setTextColor(resources.getColor(android.R.color.black))
             rd_opt2.setTextColor(resources.getColor(android.R.color.black))
             rd_opt3.setTextColor(resources.getColor(android.R.color.black))
@@ -70,6 +73,8 @@ class PractiseActivity : AppCompatActivity() {
                     rd_opt4.setClickable(false)
                     rd_opt1.setTextColor(resources.getColor(android.R.color.holo_red_light))
                 }
+
+
                 R.id.rd_opt2 -> if (corrctans!!.equals(rd_opt2.text)){
 
                     rd_opt1.setClickable(false)
@@ -90,51 +95,59 @@ class PractiseActivity : AppCompatActivity() {
                     rd_opt4.setClickable(false)
                     rd_opt2.setTextColor(resources.getColor(android.R.color.holo_red_light))
                 }
-                R.id.rd_opt3 -> if (corrctans!!.equals(rd_opt3.text)){
-                    Log.i("radio11",""+rd_opt3.text)
-                    rd_opt1.setClickable(false)
-                    rd_opt2.setClickable(false)
-                    rd_opt3.setClickable(false)
-                    rd_opt4.setClickable(false)
-                    rd_opt3.setTextColor(resources.getColor(android.R.color.holo_green_light))
-                }else{
-                    when(corrctans){
-                        rd_opt1.text->rd_opt1.setTextColor(resources.getColor(android.R.color.holo_green_light))
-                        rd_opt2.text->rd_opt2.setTextColor(resources.getColor(android.R.color.holo_green_light))
-                        rd_opt4.text->rd_opt4.setTextColor(resources.getColor(android.R.color.holo_green_light))
 
-                    }
-                    rd_opt1.setClickable(false)
-                    rd_opt2.setClickable(false)
-                    rd_opt3.setClickable(false)
-                    rd_opt4.setClickable(false)
-                    rd_opt3.setTextColor(resources.getColor(android.R.color.holo_red_light))
-                }
-                R.id.rd_opt4 -> if (corrctans!!.equals(rd_opt4.text)){
-                    Log.i("radio11",""+rd_opt4.text)
-                    rd_opt1.setClickable(false)
-                    rd_opt2.setClickable(false)
-                    rd_opt3.setClickable(false)
-                    rd_opt4.setClickable(false)
-                    rd_opt4.setTextColor(resources.getColor(android.R.color.holo_green_light))
-                }else{
-                    when(corrctans){
-                        rd_opt1.text->rd_opt1.setTextColor(resources.getColor(android.R.color.holo_green_light))
-                        rd_opt2.text->rd_opt2.setTextColor(resources.getColor(android.R.color.holo_green_light))
-                        rd_opt3.text->rd_opt3.setTextColor(resources.getColor(android.R.color.holo_green_light))
-
-
-                    }
-                    rd_opt1.setClickable(false)
-                    rd_opt2.setClickable(false)
-                    rd_opt3.setClickable(false)
-                    rd_opt4.setClickable(false)
-                    rd_opt4.setTextColor(resources.getColor(android.R.color.holo_red_light))
-                }
 
             }
 
         }
+       rg_2.setOnCheckedChangeListener { group, checkedId ->
+
+           when(checkedId){
+               R.id.rd_opt3 -> if (corrctans!!.equals(rd_opt3.text)){
+                   Log.i("radio11",""+rd_opt3.text)
+                   rd_opt1.setClickable(false)
+                   rd_opt2.setClickable(false)
+                   rd_opt3.setClickable(false)
+                   rd_opt4.setClickable(false)
+                   rd_opt3.setTextColor(resources.getColor(android.R.color.holo_green_light))
+               }else{
+                   when(corrctans){
+                       rd_opt1.text->rd_opt1.setTextColor(resources.getColor(android.R.color.holo_green_light))
+                       rd_opt2.text->rd_opt2.setTextColor(resources.getColor(android.R.color.holo_green_light))
+                       rd_opt4.text->rd_opt4.setTextColor(resources.getColor(android.R.color.holo_green_light))
+
+                   }
+                   rd_opt1.setClickable(false)
+                   rd_opt2.setClickable(false)
+                   rd_opt3.setClickable(false)
+                   rd_opt4.setClickable(false)
+                   rd_opt3.setTextColor(resources.getColor(android.R.color.holo_red_light))
+               }
+               R.id.rd_opt4 -> if (corrctans!!.equals(rd_opt4.text)){
+                   Log.i("radio11",""+rd_opt4.text)
+                   rd_opt1.setClickable(false)
+                   rd_opt2.setClickable(false)
+                   rd_opt3.setClickable(false)
+                   rd_opt4.setClickable(false)
+                   rd_opt4.setTextColor(resources.getColor(android.R.color.holo_green_light))
+               }else{
+                   when(corrctans){
+                       rd_opt1.text->rd_opt1.setTextColor(resources.getColor(android.R.color.holo_green_light))
+                       rd_opt2.text->rd_opt2.setTextColor(resources.getColor(android.R.color.holo_green_light))
+                       rd_opt3.text->rd_opt3.setTextColor(resources.getColor(android.R.color.holo_green_light))
+
+
+                   }
+                   rd_opt1.setClickable(false)
+                   rd_opt2.setClickable(false)
+                   rd_opt3.setClickable(false)
+                   rd_opt4.setClickable(false)
+                   rd_opt4.setTextColor(resources.getColor(android.R.color.holo_red_light))
+               }
+
+           }
+
+       }
     }
 
     private fun getData(qno: String?, value: String?) {
@@ -166,21 +179,38 @@ class PractiseActivity : AppCompatActivity() {
                 Log.i("Practice11",""+practice?.optionB)
                 Log.i("Practice11",""+practice?.optionD)
                 Log.i("Practice11",""+practice?.correctAnswer)*/
-                setData(question,optionA,optionB,optionC,optionD)
+                setData(question,optionA,optionB,optionC,optionD,value)
 
             }
 
         })
     }
 
-    private fun setData(question: String?, optionA: String?, optionB: String?, optionC: String?, optionD: String?) {
+    private fun setData(question: String?, optionA: String?, optionB: String?, optionC: String?, optionD: String?, value: String?) {
       //  tv_ques.setText(question)
-        when(question){
-            "Addition"-> {
+        Log.i("question11",""+question)
 
-                var obj = arrayOf(question?.split("+"))
-                Log.i("objvalue11",""+obj[0])
-                Log.i("objvalue11",""+obj[1])
+        when(value){
+            "Addition"-> {
+                //val regex = "\\s*,\\s*"
+                val obj :List<String> = question?.trim()!!.split("+","=").toList()
+                Log.i("obj11",""+obj)
+
+                for(i in 0..obj.size-1){
+                   Log.i("data11",""+ obj[i])
+                 if(i == 0){
+                     data_number = obj[i]
+
+                 }
+                    if(i== 1){
+                     data_number1 = obj[i]
+                        Log.i("data11num",""+ data_number1)
+                 }
+
+                }
+                bt_number.setText(data_number)
+                bt_number1.setText(data_number1)
+                bt_symbol.setText("+")
 
             }
 
@@ -188,6 +218,7 @@ class PractiseActivity : AppCompatActivity() {
         }
 
        // question.split("+")
+
         rd_opt1.setText(optionA)
         rd_opt2.setText(optionB)
         rd_opt3.setText(optionC)
