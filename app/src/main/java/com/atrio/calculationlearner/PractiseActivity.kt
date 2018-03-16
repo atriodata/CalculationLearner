@@ -163,7 +163,7 @@ class PractiseActivity : AppCompatActivity() {
             }
 
             override fun onDataChange(p0: DataSnapshot?) {
-                Log.i("Practice1111",""+p0?.ref.toString())
+                Log.i("Practice1111",""+p0?.childrenCount)
                 //
                 // var subkey = p0?.getKey()
                 Log.i("Practice11",""+p0.toString())
