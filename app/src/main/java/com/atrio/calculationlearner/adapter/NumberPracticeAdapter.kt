@@ -64,6 +64,7 @@ class NumberPracticeAdapter(var activity: Context, var items: ArrayList<NumData>
 //        btn_forward=row?.findViewById<ImageButton>(R.id.btn_next)
 
         tts = TextToSpeech(activity, this)
+        textspeak("Hello")
 
 
         var userDto = items[position]
@@ -138,10 +139,8 @@ class NumberPracticeAdapter(var activity: Context, var items: ArrayList<NumData>
 
         btn_speak?.setOnClickListener(View.OnClickListener {
             text = tv_1st!!.text.toString() + speak + tv_2nd!!.text.toString() + tv_equal!!.text.toString() + tv_result!!.text.toString()
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                this.tts!!.speak(text, TextToSpeech.QUEUE_FLUSH, null, "")
-                this.tts!!.setSpeechRate(0.7f)
-            }
+
+            textspeak(text!!)
         })
 
 
@@ -150,6 +149,14 @@ class NumberPracticeAdapter(var activity: Context, var items: ArrayList<NumData>
         (container as ViewPager).addView(row)
 
         return row
+
+    }
+
+    private fun textspeak(text: String) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            this.tts!!.speak(text, TextToSpeech.QUEUE_FLUSH, null, "")
+            this.tts!!.setSpeechRate(0.7f)
+        }
 
     }
 
