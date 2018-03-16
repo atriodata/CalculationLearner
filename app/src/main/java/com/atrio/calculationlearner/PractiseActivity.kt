@@ -29,10 +29,12 @@ class PractiseActivity : AppCompatActivity() {
 
                 Log.i("qno11",""+qno)
                 getData(qno,whtsoptionvalue)
+        bt_nxt.isEnabled = false
 
         bt_nxt.setOnClickListener(View.OnClickListener {
             radioGroup.clearCheck()
             rg_2.clearCheck()
+            bt_nxt.isEnabled = false
             rd_opt1.setTextColor(resources.getColor(android.R.color.black))
             rd_opt2.setTextColor(resources.getColor(android.R.color.black))
             rd_opt3.setTextColor(resources.getColor(android.R.color.black))
@@ -50,7 +52,7 @@ class PractiseActivity : AppCompatActivity() {
 
 
         radioGroup.setOnCheckedChangeListener { group, checkedId ->
-
+            bt_nxt.isEnabled = true
 
             when(checkedId){
                 R.id.rd_opt1 -> if (corrctans!!.equals(rd_opt1.text)){
@@ -101,7 +103,7 @@ class PractiseActivity : AppCompatActivity() {
 
         }
        rg_2.setOnCheckedChangeListener { group, checkedId ->
-
+           bt_nxt.isEnabled = true
            when(checkedId){
                R.id.rd_opt3 -> if (corrctans!!.equals(rd_opt3.text)){
                    Log.i("radio11",""+rd_opt3.text)
@@ -192,7 +194,6 @@ class PractiseActivity : AppCompatActivity() {
 
         when(value){
             "Addition"-> {
-                //val regex = "\\s*,\\s*"
                 val obj :List<String> = question?.trim()!!.split("+","=").toList()
                 Log.i("obj11",""+obj)
 
@@ -211,6 +212,154 @@ class PractiseActivity : AppCompatActivity() {
                 bt_number.setText(data_number)
                 bt_number1.setText(data_number1)
                 bt_symbol.setText("+")
+
+            }
+            "Multipllication "-> {
+                val obj :List<String> = question?.trim()!!.split("X","=").toList()
+                Log.i("obj11",""+obj)
+
+                for(i in 0..obj.size-1){
+                    Log.i("data11",""+ obj[i])
+                    if(i == 0){
+                        data_number = obj[i]
+
+                    }
+                    if(i== 1){
+                        data_number1 = obj[i]
+                        Log.i("data11num",""+ data_number1)
+                    }
+
+                }
+                bt_number.setText(data_number)
+                bt_number1.setText(data_number1)
+                bt_symbol.setText("X")
+
+            }
+            "Division"-> {
+                val obj :List<String> = question?.trim()!!.split("÷","=").toList()
+                Log.i("obj11",""+obj)
+
+                for(i in 0..obj.size-1){
+                    Log.i("data11",""+ obj[i])
+                    if(i == 0){
+                        data_number = obj[i]
+
+                    }
+                    if(i== 1){
+                        data_number1 = obj[i]
+                        Log.i("data11num",""+ data_number1)
+                    }
+
+                }
+                bt_number.setText(data_number)
+                bt_number1.setText(data_number1)
+                bt_symbol.setText("÷")
+
+            }
+            "Substraction"-> {
+                val obj :List<String> = question?.trim()!!.split("-","=").toList()
+                Log.i("obj11",""+obj)
+
+                for(i in 0..obj.size-1){
+                    Log.i("data11",""+ obj[i])
+                    if(i == 0){
+                        data_number = obj[i]
+
+                    }
+                    if(i== 1){
+                        data_number1 = obj[i]
+                        Log.i("data11num",""+ data_number1)
+                    }
+
+                }
+                bt_number.setText(data_number)
+                bt_number1.setText(data_number1)
+                bt_symbol.setText("-")
+
+            }
+            "RANDDOMSUBTR"-> {
+                val obj :List<String> = question?.trim()!!.split("-","=").toList()
+                Log.i("obj11",""+obj)
+
+                for(i in 0..obj.size-1){
+                    Log.i("data11",""+ obj[i])
+                    if(i == 0){
+                        data_number = obj[i]
+
+                    }
+                    if(i== 1){
+                        data_number1 = obj[i]
+                        Log.i("data11num",""+ data_number1)
+                    }
+
+                }
+                bt_number.setText(data_number)
+                bt_number1.setText(data_number1)
+                bt_symbol.setText("-")
+
+            }
+            "RANDOMMULTI"-> {
+                val obj :List<String> = question?.trim()!!.split("X","=").toList()
+                Log.i("obj11",""+obj)
+
+                for(i in 0..obj.size-1){
+                    Log.i("data11",""+ obj[i])
+                    if(i == 0){
+                        data_number = obj[i]
+
+                    }
+                    if(i== 1){
+                        data_number1 = obj[i]
+                        Log.i("data11num",""+ data_number1)
+                    }
+
+                }
+                bt_number.setText(data_number)
+                bt_number1.setText(data_number1)
+                bt_symbol.setText("X")
+
+            }
+
+            "RandomAddition"-> {
+                val obj :List<String> = question?.trim()!!.split("+","=").toList()
+                Log.i("obj11",""+obj)
+
+                for(i in 0..obj.size-1){
+                    Log.i("data11",""+ obj[i])
+                    if(i == 0){
+                        data_number = obj[i]
+
+                    }
+                    if(i== 1){
+                        data_number1 = obj[i]
+                        Log.i("data11num",""+ data_number1)
+                    }
+
+                }
+                bt_number.setText(data_number)
+                bt_number1.setText(data_number1)
+                bt_symbol.setText("+")
+
+            }
+            "Randomdivision"-> {
+                val obj :List<String> = question?.trim()!!.split("÷","=").toList()
+                Log.i("obj11",""+obj)
+
+                for(i in 0..obj.size-1){
+                    Log.i("data11",""+ obj[i])
+                    if(i == 0){
+                        data_number = obj[i]
+
+                    }
+                    if(i== 1){
+                        data_number1 = obj[i]
+                        Log.i("data11num",""+ data_number1)
+                    }
+
+                }
+                bt_number.setText(data_number)
+                bt_number1.setText(data_number1)
+                bt_symbol.setText("÷")
 
             }
 

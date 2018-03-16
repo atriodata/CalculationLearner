@@ -35,7 +35,7 @@ var sub :String? = null
                 startActivity(intent)
             }else{
                 intent=Intent(this@CategoryActivity,PractiseActivity::class.java)
-                intent.putExtra("categoryvalue","substraction")
+                intent.putExtra("categoryvalue","Substraction")
                 startActivity(intent)
 
             }
