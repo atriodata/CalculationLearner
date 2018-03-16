@@ -1,31 +1,32 @@
 package com.atrio.calculationlearner.adapter
 
-import android.app.Activity
 import android.content.Context
 import android.support.v4.view.PagerAdapter
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.content.Context.LAYOUT_INFLATER_SERVICE
 import android.os.Build
 import android.speech.tts.TextToSpeech
+import android.speech.tts.UtteranceProgressListener
 import android.support.v4.view.ViewPager
 import android.util.Log
 import android.view.LayoutInflater
-import android.widget.ImageButton
 import com.atrio.calculationlearner.R
 import com.atrio.calculationlearner.model.NumData
 import java.util.*
 import android.view.animation.AnimationUtils
 import android.view.animation.Animation
+import android.widget.Toast
 
 
 /**
  * Created by Arpita Patel on 09-03-2018.
  */
 
-class NumberPracticeAdapter(var activity: Context, var items: ArrayList<NumData>) : PagerAdapter(), TextToSpeech.OnInitListener, Animation.AnimationListener {
+class NumberPracticeAdapter(var context: Context, var items: ArrayList<NumData>) : PagerAdapter(), TextToSpeech.OnInitListener, Animation.AnimationListener {
+
+
 
     var tts: TextToSpeech? = null
     var speak: String? = null
@@ -41,17 +42,15 @@ class NumberPracticeAdapter(var activity: Context, var items: ArrayList<NumData>
         return 20
     }
 
-    override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        var tv_1st: TextView? = null
-        var tv_symbol: TextView? = null
-        var tv_2nd: TextView? = null
-        var tv_equal: TextView? = null
-        var tv_result: TextView? = null
-        var btn_speak: Button? = null
-//        var btn_back: ImageButton?=null
-//        var btn_forward: ImageButton?=null
+    override fun instantiateItem(container: ViewGroup, position: Int): View {
+        val tv_1st: TextView?
+        val tv_symbol: TextView?
+        val tv_2nd: TextView?
+        val tv_equal: TextView?
+        val tv_result: TextView?
+        val btn_speak: Button?
 
-        val inflater = activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val row = inflater.inflate(R.layout.practice_one_view, container, false)
 
         tv_1st = row?.findViewById(R.id.tv_1st)
@@ -60,13 +59,11 @@ class NumberPracticeAdapter(var activity: Context, var items: ArrayList<NumData>
         tv_equal = row?.findViewById<TextView>(R.id.tv_equals)
         tv_result = row?.findViewById<TextView>(R.id.tv_result)
         btn_speak = row?.findViewById<Button>(R.id.btn_speak)
-//        btn_back=row?.findViewById<ImageButton>(R.id.btn_back)
-//        btn_forward=row?.findViewById<ImageButton>(R.id.btn_next)
 
-        tts = TextToSpeech(activity, this)
+        tts = TextToSpeech(context, this)
 
 
-        var userDto = items[position]
+        val userDto = items[position]
         tv_1st?.text = userDto.param1
         tv_2nd?.text = userDto.param2
         tv_symbol?.text = userDto.symbol
@@ -74,7 +71,7 @@ class NumberPracticeAdapter(var activity: Context, var items: ArrayList<NumData>
 
         val value1: Int = tv_1st?.text.toString().toInt()
         val value2: Int = tv_2nd?.text.toString().toInt()
-        var result: Int = 0
+        var result = 0
         if (tv_symbol?.text!!.equals("+")) {
             result = value1 + value2
             speak = "Pluse"
@@ -99,49 +96,38 @@ class NumberPracticeAdapter(var activity: Context, var items: ArrayList<NumData>
         tv_result?.text = userDto.numresult
 
 
+        val animation = AnimationUtils.loadAnimation(context, R.anim.slide)
+        tv_1st!!.startAnimation(animation)
+//        tv_2nd!!.startAnimation(animation)
+        animation.setAnimationListener(this)
 
-        val textViewIds = intArrayOf(R.id.tv_1st, R.id.tv_symbol, R.id.tv_2st, R.id.tv_equals, R.id.tv_result)
+
+
+
+       /* val textViewIds = intArrayOf(R.id.tv_1st, R.id.tv_symbol, R.id.tv_2st, R.id.tv_equals, R.id.tv_result)
         var i = 1
 
         for (viewId in textViewIds) {
-            val animation = AnimationUtils.loadAnimation(activity, R.anim.slide)
+            val animation = AnimationUtils.loadAnimation(context, R.anim.slide)
 
             animation.startOffset = (i * 1000).toLong()
-//            Log.i("playsound54",onetext)
             val textViewId = textViewIds[i - 1]
             val textView = row?.findViewById(textViewId) as TextView
 
             onetext=textView.text.toString()
+
+
             Log.i("playsound5444",onetext)
             textView.startAnimation(animation)
-            animation.setAnimationListener(this)
-
-/*
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                this.tts!!.speak(onetext, TextToSpeech.QUEUE_FLUSH, null, "")
-                this.tts!!.setSpeechRate(0.7f)
-            }
-*/
-
+            textspeak(onetext)
             i++
-        }
-/*
+        }*/
 
-
-
-        tv_1st.startAnimation(animation)
-        tv_symbol.startAnimation(animation)
-        tv_2nd.startAnimation(animation)
-        tv_equal.startAnimation(animation)
-        tv_result.startAnimation(animation)*/
 
 
         btn_speak?.setOnClickListener(View.OnClickListener {
             text = tv_1st!!.text.toString() + speak + tv_2nd!!.text.toString() + tv_equal!!.text.toString() + tv_result!!.text.toString()
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                this.tts!!.speak(text, TextToSpeech.QUEUE_FLUSH, null, "")
-                this.tts!!.setSpeechRate(0.7f)
-            }
+           textspeak(text)
         })
 
 
@@ -153,30 +139,28 @@ class NumberPracticeAdapter(var activity: Context, var items: ArrayList<NumData>
 
     }
 
-    override fun onAnimationRepeat(animation: Animation) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onAnimationRepeat(animation: Animation?) {
+
     }
 
-    override fun onAnimationEnd(animation: Animation) {
-        Log.i("playsound","playing4555")
-/*
-        if(tts !=null){
-            Log.i("PlaySeries", "In pause play series");
-            this.tts?.stop()
-            this.tts?.shutdown()
-        }
-*/
+    override fun onAnimationEnd(animation: Animation?) {
+//        textspeak("end")
     }
 
-    override fun onAnimationStart(animation: Animation) {
-//        val text = tv_1st!!.text.toString()+speak+tv_2nd!!.text.toString()+tv_equal!!.text.toString()+tv_result!!.text.toString()
-        Log.i("playsound54",onetext)
+    override fun onAnimationStart(animation: Animation?) {
+       textspeak("hello")
+
+    }
+    fun textspeak(text: String?) {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            this.tts!!.speak(onetext, TextToSpeech.QUEUE_FLUSH, null, "")
+            this.tts!!.speak(text, TextToSpeech.QUEUE_FLUSH, null, "")
             this.tts!!.setSpeechRate(0.7f)
+        }else{
+
         }
     }
+
 
 
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
@@ -198,8 +182,10 @@ class NumberPracticeAdapter(var activity: Context, var items: ArrayList<NumData>
             val result = this.tts!!.setLanguage(Locale.US)
 
             if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                Log.i("TTS", "The Language specified is not supported!")
+               // textspeak("Hello")
+                Log.i("TTS11", "The Language specified is not supported!")
             } else {
+//                textspeak(onetext)
 //                this.btn_speak!!.isEnabled = true
             }
 

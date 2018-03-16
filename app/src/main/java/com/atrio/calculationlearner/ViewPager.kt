@@ -1,15 +1,12 @@
 package com.atrio.calculationlearner
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
 import com.atrio.calculationlearner.adapter.NumberPracticeAdapter
-import com.atrio.calculationlearner.adapter.TestAdapter
 import com.atrio.calculationlearner.model.NumData
 import kotlinx.android.synthetic.main.activity_view_pager.*
-import kotlinx.android.synthetic.main.practice_one_view.*
 
 /**
  * Created by Arpita Patel on 09-03-2018.
@@ -26,9 +23,10 @@ class ViewPager: AppCompatActivity() {
         mathsymbol = whtsoptionvalue.substring(1)
         datasymbol = whtsoptionvalue.substring(0,1)
 
-        Log.i("whatsvalue2", datasymbol)
 
         pager.adapter=NumberPracticeAdapter(this,generateData(whtsoptionvalue))
+
+
         btn_back?.setOnClickListener(View.OnClickListener {
             pager.setCurrentItem(getItemofviewpager(-1), true)
         })
