@@ -17,7 +17,7 @@ var sub :String? = null
         sub =intent.getStringExtra("sub")
         btn_adds.setOnClickListener(View.OnClickListener {
             if (sub.equals("learn")){
-                intent=Intent(this@CategoryActivity,ViewPager::class.java)
+                intent=Intent(this@CategoryActivity,LearnActivity::class.java)
                 intent.putExtra("categoryvalue","s+")
                 startActivity(intent)
             }else{
@@ -30,7 +30,7 @@ var sub :String? = null
         })
         btn_subs.setOnClickListener(View.OnClickListener {
             if (sub.equals("learn")){
-                intent=Intent(this@CategoryActivity,ViewPager::class.java)
+                intent=Intent(this@CategoryActivity,LearnActivity::class.java)
                 intent.putExtra("categoryvalue","s-")
                 startActivity(intent)
             }else{
@@ -43,7 +43,7 @@ var sub :String? = null
         })
         btn_muls.setOnClickListener(View.OnClickListener {
             if (sub.equals("learn")) {
-                intent = Intent(this@CategoryActivity, ViewPager::class.java)
+                intent = Intent(this@CategoryActivity, LearnActivity::class.java)
                 intent.putExtra("categoryvalue", "s\u00D7")
                 startActivity(intent)
             }else{
@@ -54,7 +54,7 @@ var sub :String? = null
         })
         btn_divs.setOnClickListener(View.OnClickListener {
             if (sub.equals("learn")) {
-                intent = Intent(this@CategoryActivity, ViewPager::class.java)
+                intent = Intent(this@CategoryActivity, LearnActivity::class.java)
                 intent.putExtra("categoryvalue", "s\u00F7")
                 startActivity(intent)
             }else{
@@ -66,7 +66,7 @@ var sub :String? = null
 
         btn_addr.setOnClickListener(View.OnClickListener {
             if (sub.equals("learn")){
-                intent=Intent(this@CategoryActivity,ViewPager::class.java)
+                intent=Intent(this@CategoryActivity,LearnActivity::class.java)
                 intent.putExtra("categoryvalue","r+")
                 startActivity(intent)
             }else{
@@ -78,7 +78,7 @@ var sub :String? = null
         })
         btn_subr.setOnClickListener(View.OnClickListener {
             if (sub.equals("learn")){
-                intent=Intent(this@CategoryActivity,ViewPager::class.java)
+                intent=Intent(this@CategoryActivity,LearnActivity::class.java)
                 intent.putExtra("categoryvalue","r-")
                 startActivity(intent)
             }else{
@@ -90,7 +90,7 @@ var sub :String? = null
         })
         btn_mulr.setOnClickListener(View.OnClickListener {
             if (sub.equals("learn")){
-                intent=Intent(this@CategoryActivity,ViewPager::class.java)
+                intent=Intent(this@CategoryActivity,LearnActivity::class.java)
                 intent.putExtra("categoryvalue","r\u00D7")
                 startActivity(intent)
             }else{
@@ -102,7 +102,7 @@ var sub :String? = null
         })
         btn_divr.setOnClickListener(View.OnClickListener {
             if (sub.equals("learn")){
-                intent=Intent(this@CategoryActivity,ViewPager::class.java)
+                intent=Intent(this@CategoryActivity,LearnActivity::class.java)
                 intent.putExtra("categoryvalue","r\u00F7")
                 startActivity(intent)
             }else{
