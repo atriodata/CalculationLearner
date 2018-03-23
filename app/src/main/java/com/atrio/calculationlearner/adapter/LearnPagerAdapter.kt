@@ -30,8 +30,6 @@ class LearnPagerAdapter(var context: Context, var param1: String, var symbol: St
     var tv_equal: TextView? = null
     var tv_result: TextView? = null
     var btn_speak: Button? = null
-    var index=1
-//    val animation = AnimationUtils.loadAnimation(context, R.anim.slide)
 
 
     override fun getCount(): Int {
@@ -40,13 +38,6 @@ class LearnPagerAdapter(var context: Context, var param1: String, var symbol: St
 
 
     override fun instantiateItem(container: ViewGroup, position: Int): View {
-
-        Log.i("viewpagerposition", "" + position)
-        Log.i("viewpagerpositionparam", "" + param2[position])
-        if (position!=0){
-            index=position-index
-        }
-        Log.i("viewpagerposition45", "" + index)
 
         val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
         val row = inflater.inflate(R.layout.practice_one_view, container, false)
@@ -60,138 +51,161 @@ class LearnPagerAdapter(var context: Context, var param1: String, var symbol: St
 
         tts = TextToSpeech(context, this)
 
-/*
-        tv_1st?.text = param1
-        tv_2nd?.text = param2[position].toString()
-        tv_symbol?.text = symbol
-        tv_equal?.text = equal*/
-
-
-        val value1: Int = param1.toInt()
-        val value2: Int = param2[position]
-
-        var result = 0
-        if (symbol.equals("+")) {
-            result = value1 + value2
-            speak = "Pluse"
-
-        } else if (symbol.equals("-")) {
-            tv_1st?.text = param2[position].toString()
-            tv_2nd?.text = param1
-            result = value2 - value1
-            speak = "Minus"
-
-        } else if (symbol.equals("\u00D7")) {
-            speak = "into"
-            result = value1 * value2
-        } else if (symbol.equals("\u00F7")) {
-            tv_1st?.text = param2[position].toString()
-            tv_2nd?.text = param1
-            result = value2 / value1
-            speak = "Divided By"
-
-        }
-        numresult = result.toString()
-
-
-       /* val animationparam1 = AnimationUtils.loadAnimation(context, R.anim.slide)
+        val animationparam1 = AnimationUtils.loadAnimation(context, R.anim.slide)
         val animationsymbol = AnimationUtils.loadAnimation(context, R.anim.slide)
         val animationparam2 = AnimationUtils.loadAnimation(context, R.anim.slide)
         val animationequal = AnimationUtils.loadAnimation(context, R.anim.slide)
-        val animationresult = AnimationUtils.loadAnimation(context, R.anim.slide)*/
+        val animationresult = AnimationUtils.loadAnimation(context, R.anim.slide)
 
 
-        tv_1st?.text = param1
-        tv_symbol?.text = symbol
-        tv_2nd?.text = param2[position].toString()
-        tv_equal?.text = equal
-        tv_result?.text = numresult
 
-/*
+        if (position == 0) {
+            val value1: Int = param1.toInt()
+            val value2: Int = param2[0]
+            Log.i("myvalue",value2.toString())
+            var result = 0
+            if (symbol.equals("+")) {
+                result = value1 + value2
+                Log.i("myvalue45",result.toString())
+                speak = "Pluse"
 
-        tv_1st?.startAnimation(animationparam1)
-        animationparam1.setAnimationListener(object : Animation.AnimationListener {
-            override fun onAnimationRepeat(animation: Animation?) {
+            } else if (symbol.equals("-")) {
+                result = value2 - value1
+                speak = "Minus"
+
+            } else if (symbol.equals("\u00D7")) {
+                speak = "into"
+                result = value1 * value2
+            } else if (symbol.equals("\u00F7")) {
+                result = value2 / value1
+                speak = "Divided By"
+
             }
+            numresult = result.toString()
+            Log.i("myvalueres",numresult)
 
-            override fun onAnimationEnd(animation: Animation?) {
-                onetext = param1
-                speaktextone(1000)
+            tv_1st?.text = param1
+            tv_symbol?.text = symbol
+            tv_2nd?.text = param2[position].toString()
+            tv_equal?.text = equal
+            tv_result?.text = numresult
+
+            tv_1st?.startAnimation(animationparam1)
+            animationparam1.setAnimationListener(object : Animation.AnimationListener {
+                override fun onAnimationRepeat(animation: Animation?) {
+                }
+
+                override fun onAnimationEnd(animation: Animation?) {
+                    onetext = param1
+                    speaktextone(1000)
+                }
+
+                override fun onAnimationStart(animation: Animation?) {
+                }
+
+            })
+
+            tv_symbol?.startAnimation(animationsymbol)
+            animationsymbol.startOffset = (3000)
+            animationsymbol.setAnimationListener(object : Animation.AnimationListener {
+                override fun onAnimationRepeat(animation: Animation?) {
+                }
+
+                override fun onAnimationEnd(animation: Animation?) {
+
+                    onetext = symbol
+                    speaktextone(3000)
+                }
+
+                override fun onAnimationStart(animation: Animation?) {
+                }
+
+            })
+            tv_2nd?.startAnimation(animationparam2)
+
+            animationparam2.startOffset = (6000)
+            animationparam2.setAnimationListener(object : Animation.AnimationListener {
+                override fun onAnimationRepeat(animation: Animation?) {
+                }
+
+                override fun onAnimationEnd(animation: Animation?) {
+
+                    onetext = param2[0].toString()
+                    speaktextone(6000)
+                }
+
+                override fun onAnimationStart(animation: Animation?) {
+                }
+
+            })
+            tv_equal?.startAnimation(animationequal)
+            animationequal.startOffset = (9000)
+            animationequal.setAnimationListener(object : Animation.AnimationListener {
+                override fun onAnimationRepeat(animation: Animation?) {
+                }
+
+                override fun onAnimationEnd(animation: Animation?) {
+                    onetext = equal
+                    speaktextone(9000)
+                }
+
+                override fun onAnimationStart(animation: Animation?) {
+                }
+
+            })
+            tv_result?.startAnimation(animationresult)
+            animationresult.startOffset = (12000)
+            animationresult.setAnimationListener(object : Animation.AnimationListener {
+                override fun onAnimationRepeat(animation: Animation?) {
+                }
+
+                override fun onAnimationEnd(animation: Animation?) {
+
+                    onetext = numresult
+                    Log.i("getpredataresult", onetext)
+                    speaktextone(12000)
+                }
+
+                override fun onAnimationStart(animation: Animation?) {
+                }
+
+            })
+
+
+        }else{
+
+            val value1: Int = param1.toInt()
+            val value2: Int = param2[position]
+
+            var result = 0
+            if (symbol.equals("+")) {
+                result = value1 + value2
+                speak = "Pluse"
+
+            } else if (symbol.equals("-")) {
+                tv_1st?.text = param2[position].toString()
+                tv_2nd?.text = param1
+                result = value2 - value1
+                speak = "Minus"
+
+            } else if (symbol.equals("\u00D7")) {
+                speak = "into"
+                result = value1 * value2
+            } else if (symbol.equals("\u00F7")) {
+                tv_1st?.text = param2[position].toString()
+                tv_2nd?.text = param1
+                result = value2 / value1
+                speak = "Divided By"
+
             }
+            numresult = result.toString()
 
-            override fun onAnimationStart(animation: Animation?) {
-            }
-
-        })
-
-        tv_symbol?.startAnimation(animationsymbol)
-        animationsymbol.startOffset = (3000)
-        animationsymbol.setAnimationListener(object : Animation.AnimationListener {
-            override fun onAnimationRepeat(animation: Animation?) {
-            }
-
-            override fun onAnimationEnd(animation: Animation?) {
-
-                onetext = symbol
-                speaktextone(3000)
-            }
-
-            override fun onAnimationStart(animation: Animation?) {
-            }
-
-        })
-        tv_2nd?.startAnimation(animationparam2)
-
-        animationparam2.startOffset = (6000)
-        animationparam2.setAnimationListener(object : Animation.AnimationListener {
-            override fun onAnimationRepeat(animation: Animation?) {
-            }
-
-            override fun onAnimationEnd(animation: Animation?) {
-
-                onetext = param2[index].toString()
-                Log.i("getpredata",param2[position].toString())
-//                Log.i("getpredata1",(param2[position]-1).toString())
-                Log.i("getpredata2",onetext)
-                speaktextone(6000)
-            }
-
-            override fun onAnimationStart(animation: Animation?) {
-            }
-
-        })
-        tv_equal?.startAnimation(animationequal)
-        animationequal.startOffset = (9000)
-        animationequal.setAnimationListener(object : Animation.AnimationListener {
-            override fun onAnimationRepeat(animation: Animation?) {
-            }
-
-            override fun onAnimationEnd(animation: Animation?) {
-                onetext = equal
-                speaktextone(9000)
-            }
-
-            override fun onAnimationStart(animation: Animation?) {
-            }
-
-        })
-        tv_result?.startAnimation(animationresult)
-        animationresult.startOffset = (12000)
-        animationresult.setAnimationListener(object : Animation.AnimationListener {
-            override fun onAnimationRepeat(animation: Animation?) {
-            }
-
-            override fun onAnimationEnd(animation: Animation?) {
-                onetext = numresult
-                speaktextone(12000)
-            }
-
-            override fun onAnimationStart(animation: Animation?) {
-            }
-
-        })
-
-*/
+            tv_1st?.text = param1
+            tv_symbol?.text = symbol
+            tv_2nd?.text = param2[position].toString()
+            tv_equal?.text = equal
+            tv_result?.text = numresult
+        }
         /*  Thread(Runnable {
               Thread.sleep(1000)
               tv_1st?.post(Runnable {
@@ -241,7 +255,7 @@ class LearnPagerAdapter(var context: Context, var param1: String, var symbol: St
 
     }
 
-    fun speaktextone(duration:Int){
+    fun speaktextone(duration: Int) {
         tts!!.speak(onetext, TextToSpeech.QUEUE_FLUSH, null)
 /*
         Thread(Runnable {
@@ -255,6 +269,7 @@ class LearnPagerAdapter(var context: Context, var param1: String, var symbol: St
 
 //        tts!!.speak(mytext, TextToSpeech.QUEUE_FLUSH, null)
     }
+
     /*
         fun getparam1() {
 
