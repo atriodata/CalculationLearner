@@ -113,7 +113,7 @@ class LearnPagerAdapter(var context: Context, var param1: String, var symbol: St
 
                 override fun onAnimationEnd(animation: Animation?) {
 
-                    onetext = symbol
+                    onetext = speak
                     speaktextone(3000)
                 }
 
@@ -153,7 +153,9 @@ class LearnPagerAdapter(var context: Context, var param1: String, var symbol: St
                 }
 
             })
+
             tv_result?.startAnimation(animationresult)
+            notifyDataSetChanged()
             animationresult.startOffset = (12000)
             animationresult.setAnimationListener(object : Animation.AnimationListener {
                 override fun onAnimationRepeat(animation: Animation?) {
@@ -161,7 +163,7 @@ class LearnPagerAdapter(var context: Context, var param1: String, var symbol: St
 
                 override fun onAnimationEnd(animation: Animation?) {
 
-                    onetext = numresult
+                    onetext = result.toString()
                     Log.i("getpredataresult", onetext)
                     speaktextone(12000)
                 }

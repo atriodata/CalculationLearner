@@ -55,6 +55,7 @@ class LearnActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         datasymbol = whtsoptionvalue.substring(0,1)
         tts = TextToSpeech(this, this)
 
+
         btn_back?.setOnClickListener(View.OnClickListener {
             pager.setCurrentItem(getItemofviewpager(-1), true)
         })
@@ -102,6 +103,7 @@ class LearnActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
                   var symbol: TextView = page.findViewById<TextView>(R.id.tv_symbol)
                   if (symbol != null) {
+
                       symbol?.startAnimation(animationsymbol)
                       animationsymbol.startOffset = (3000)
                       animationsymbol.setAnimationListener(object : Animation.AnimationListener {
@@ -109,8 +111,16 @@ class LearnActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                           }
 
                           override fun onAnimationEnd(animation: Animation?) {
-
                               onetext=symbol.text.toString()
+                              if (onetext.equals("\u00D7")) {
+                                  onetext = "into"
+                              }
+                              if (onetext.equals("\u00F7")) {
+                                  onetext = "Divided By"
+                              }
+                              if (onetext.equals("-")) {
+                                  onetext = "Minus"
+                              }
                               tts!!.speak(onetext, TextToSpeech.QUEUE_FLUSH, null)
                           }
 
@@ -132,9 +142,6 @@ class LearnActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                           override fun onAnimationEnd(animation: Animation?) {
 
                               onetext = param2a.text.toString()
-//                              Log.i("getpredata",param2[position].toString())
-//                Log.i("getpredata1",(param2[position]-1).toString())
-                              Log.i("getpredata2",onetext)
                               tts!!.speak(onetext, TextToSpeech.QUEUE_FLUSH, null)
                           }
 
@@ -157,9 +164,6 @@ class LearnActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                           override fun onAnimationEnd(animation: Animation?) {
 
                               onetext = equal.text.toString()
-//                              Log.i("getpredata",param2[position].toString())
-//                Log.i("getpredata1",(param2[position]-1).toString())
-                              Log.i("getpredata2",onetext)
                               tts!!.speak(onetext, TextToSpeech.QUEUE_FLUSH, null)
                           }
 
@@ -182,9 +186,6 @@ class LearnActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                           override fun onAnimationEnd(animation: Animation?) {
 
                               onetext = result.text.toString()
-//                              Log.i("getpredata",param2[position].toString())
-//                Log.i("getpredata1",(param2[position]-1).toString())
-                              Log.i("getpredata2",onetext)
                               tts!!.speak(onetext, TextToSpeech.QUEUE_FLUSH, null)
                           }
 
