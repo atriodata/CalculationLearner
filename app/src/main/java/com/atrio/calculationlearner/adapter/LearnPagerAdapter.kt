@@ -208,48 +208,13 @@ class LearnPagerAdapter(var context: Context, var param1: String, var symbol: St
             tv_equal?.text = equal
             tv_result?.text = numresult
         }
-        /*  Thread(Runnable {
-              Thread.sleep(1000)
-              tv_1st?.post(Runnable {
-                  tv_1st?.text = param1
-                  onetext=tv_1st?.text.toString()
-  //                tts!!.speak(onetext, TextToSpeech.QUEUE_FLUSH, null)
-                  tv_1st?.startAnimation(animation)
 
-                  Log.i("thread11",""+onetext)
-                  animation.setAnimationListener(this)
-              })
-          }).start()
-          Thread(Runnable {
-              Thread.sleep(4000)
-              tv_symbol?.post(Runnable {
-                  tv_symbol?.text = symbol
-                  onetext=tv_symbol?.text.toString()
-  //                tts!!.speak(onetext, TextToSpeech.QUEUE_FLUSH, null)
-                  tv_symbol?.startAnimation(animation)
-
-  //                 Log.i("thread11",""+onetext)
-                  animation.setAnimationListener(this)
-              })
-
-          }).start()
-          Thread(Runnable {
-              Thread.sleep(6000)
-              tv_2nd?.post(Runnable {
-                  tv_2nd?.text =param2[position].toString()
-                  onetext=tv_2nd?.text.toString()
-                  tv_2nd?.startAnimation(animation)
-
-  //                Log.i("thread11",""+index)
-                  animation.setAnimationListener(this)
-              })
-
-          }).start()*/
-
+/*
         btn_speak?.setOnClickListener(View.OnClickListener {
             var btntext = tv_1st!!.text.toString() + speak + tv_2nd!!.text.toString() + tv_equal!!.text.toString() + tv_result!!.text.toString()
             tts!!.speak(btntext, TextToSpeech.QUEUE_FLUSH, null)
         })
+*/
 
         (container as ViewPager).addView(row)
 
