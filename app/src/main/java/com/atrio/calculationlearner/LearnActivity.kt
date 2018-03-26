@@ -20,6 +20,7 @@ import android.opengl.ETC1.getWidth
 import android.support.v4.view.ViewPager
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.Button
 
 
 /**
@@ -28,13 +29,14 @@ import android.view.animation.AnimationUtils
 class LearnActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     var mathsymbol: String?=null
     var datasymbol: String?=null
-/*    var param1: String?=null
-    val symbol:String?=null
-    val equal:String?=null
-    var numresult: String?=null*/
 
     var param2:IntArray?=null
     var tts: TextToSpeech? = null
+    var param1onetext:String?=null
+    var symbolonetext:String?=null
+    var param2onetext:String?=null
+    var equalonetext:String?=null
+    var resultonetext:String?=null
     var onetext:String?=null
     var learnPagerAdapter:LearnPagerAdapter?=null
 
@@ -54,6 +56,7 @@ class LearnActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         mathsymbol = whtsoptionvalue.substring(1)
         datasymbol = whtsoptionvalue.substring(0,1)
         tts = TextToSpeech(this, this)
+
 
         btn_back?.setOnClickListener(View.OnClickListener {
             pager.setCurrentItem(getItemofviewpager(-1), true)
@@ -90,8 +93,9 @@ class LearnActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                           }
 
                           override fun onAnimationEnd(animation: Animation?) {
-                              onetext=param1.text.toString()
-                              tts!!.speak(onetext, TextToSpeech.QUEUE_FLUSH, null)
+                              param1onetext=param1.text.toString()
+//                              onetext=param1onetext
+                              tts!!.speak(param1onetext, TextToSpeech.QUEUE_FLUSH, null)
                           }
 
                           override fun onAnimationStart(animation: Animation?) {
@@ -102,6 +106,7 @@ class LearnActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
                   var symbol: TextView = page.findViewById<TextView>(R.id.tv_symbol)
                   if (symbol != null) {
+
                       symbol?.startAnimation(animationsymbol)
                       animationsymbol.startOffset = (3000)
                       animationsymbol.setAnimationListener(object : Animation.AnimationListener {
@@ -109,9 +114,17 @@ class LearnActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                           }
 
                           override fun onAnimationEnd(animation: Animation?) {
-
-                              onetext=symbol.text.toString()
-                              tts!!.speak(onetext, TextToSpeech.QUEUE_FLUSH, null)
+                              symbolonetext=symbol.text.toString()
+                              if (symbolonetext.equals("\u00D7")) {
+                                  symbolonetext = "into"
+                              }
+                              if (symbolonetext.equals("\u00F7")) {
+                                  symbolonetext = "Divided By"
+                              }
+                              if (symbolonetext.equals("-")) {
+                                  symbolonetext = "Minus"
+                              }
+                              tts!!.speak(symbolonetext, TextToSpeech.QUEUE_FLUSH, null)
                           }
 
                           override fun onAnimationStart(animation: Animation?) {
@@ -131,11 +144,8 @@ class LearnActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
                           override fun onAnimationEnd(animation: Animation?) {
 
-                              onetext = param2a.text.toString()
-//                              Log.i("getpredata",param2[position].toString())
-//                Log.i("getpredata1",(param2[position]-1).toString())
-                              Log.i("getpredata2",onetext)
-                              tts!!.speak(onetext, TextToSpeech.QUEUE_FLUSH, null)
+                              param2onetext = param2a.text.toString()
+                              tts!!.speak(param2onetext, TextToSpeech.QUEUE_FLUSH, null)
                           }
 
                           override fun onAnimationStart(animation: Animation?) {
@@ -156,11 +166,8 @@ class LearnActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
                           override fun onAnimationEnd(animation: Animation?) {
 
-                              onetext = equal.text.toString()
-//                              Log.i("getpredata",param2[position].toString())
-//                Log.i("getpredata1",(param2[position]-1).toString())
-                              Log.i("getpredata2",onetext)
-                              tts!!.speak(onetext, TextToSpeech.QUEUE_FLUSH, null)
+                              equalonetext = equal.text.toString()
+                              tts!!.speak(equalonetext, TextToSpeech.QUEUE_FLUSH, null)
                           }
 
                           override fun onAnimationStart(animation: Animation?) {
@@ -170,7 +177,6 @@ class LearnActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
                   }
                   var result: TextView = page.findViewById<TextView>(R.id.tv_result)
-
                   if (result != null) {
                       result?.startAnimation(animationresult)
 
@@ -181,11 +187,8 @@ class LearnActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
                           override fun onAnimationEnd(animation: Animation?) {
 
-                              onetext = result.text.toString()
-//                              Log.i("getpredata",param2[position].toString())
-//                Log.i("getpredata1",(param2[position]-1).toString())
-                              Log.i("getpredata2",onetext)
-                              tts!!.speak(onetext, TextToSpeech.QUEUE_FLUSH, null)
+                              resultonetext = result.text.toString()
+                              tts!!.speak(resultonetext, TextToSpeech.QUEUE_FLUSH, null)
                           }
 
                           override fun onAnimationStart(animation: Animation?) {
@@ -194,71 +197,19 @@ class LearnActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                       })
 
                   }
+                  var btn_speak: Button = page.findViewById<Button>(R.id.btn_speak)
+        btn_speak?.setOnClickListener(View.OnClickListener {
+            var btntext = param1onetext + symbolonetext + param2onetext + equalonetext + resultonetext
+            tts!!.speak(btntext, TextToSpeech.QUEUE_FLUSH, null)
+        })
+
+
+
 
               }
           }
           })
 
-
-//        Log.i("print899",pager.currentItem.toString())
-//        pager.offscreenPageLimit=1
-
-
-/*
-        if (pager.currentItem==0){
-            Thread(Runnable {
-                Thread.sleep(1000)
-                onetext = param1
-                textspeak(onetext)
-            }).start()
-            Thread(Runnable {
-                Thread.sleep(3000)
-                onetext = mathsymbol
-                textspeak(onetext)
-            }).start()
-            Thread(Runnable {
-                Thread.sleep(6000)
-                onetext = param2!![0].toString()
-                textspeak(onetext)
-            }).start()
-            Thread(Runnable {
-                Thread.sleep(9000)
-                onetext =equal
-                textspeak(onetext)
-            }).start()
-            Thread(Runnable {
-                Thread.sleep(12000)
-                onetext = numresult
-                textspeak(onetext)
-            }).start()
-
-
-//            learnPagerAdapter?.speaktextone(onetext!!)
-        }
-*/
-/*
-        pager.addOnPageChangeListener(object : OnPageChangeListener {
-          override  fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-              Log.i("currentposition1" , param2!![position].toString())
-//              onetext = param2!![position].toString()
-//              tts!!.speak(onetext, TextToSpeech.QUEUE_FLUSH, null)
-              */
-/*val params = animatedView.getLayoutParams() as ViewPager.LayoutParams
-              params.setMargins(((position + positionOffset) * 500) as Int, 0, 0, 0)
-              animatedView.setLayoutParams(params)*//*
-
-            }
-
-           override fun onPageSelected(position: Int) {
-               Log.i("currentposition8" , param2!![position].toString())
-//               onetext = param2!![position].toString()
-            }
-
-           override fun onPageScrollStateChanged(state: Int) {
-
-            }
-        })
-*/
     }
 
 
@@ -278,7 +229,7 @@ class LearnActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         if (status != TextToSpeech.ERROR) {
             tts!!.language = Locale.UK
             tts!!.setSpeechRate(0.5.toFloat())
-            textspeak(onetext)
+//            textspeak(onetext)
         }
 
 
