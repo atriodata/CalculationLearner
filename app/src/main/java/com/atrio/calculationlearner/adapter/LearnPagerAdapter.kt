@@ -23,7 +23,12 @@ import java.util.*
 class LearnPagerAdapter(var context: Context, var param1: String, var symbol: String, var param2: IntArray, val equal: String, var numresult: String) : PagerAdapter(), TextToSpeech.OnInitListener {
     var tts: TextToSpeech? = null
     var speak: String? = null
-    var onetext: String? = null
+//    var onetext: String? = null
+    var param1onetext:String?=null
+    var symbolonetext:String?=null
+    var param2onetext:String?=null
+    var equalonetext:String?=null
+    var resultonetext:String?=null
     var tv_1st: TextView? = null
     var tv_symbol: TextView? = null
     var tv_2nd: TextView? = null
@@ -82,7 +87,6 @@ class LearnPagerAdapter(var context: Context, var param1: String, var symbol: St
 
             }
             numresult = result.toString()
-            Log.i("myvalueres",numresult)
 
             tv_1st?.text = param1
             tv_symbol?.text = symbol
@@ -96,8 +100,8 @@ class LearnPagerAdapter(var context: Context, var param1: String, var symbol: St
                 }
 
                 override fun onAnimationEnd(animation: Animation?) {
-                    onetext = param1
-                    speaktextone(1000)
+                    param1onetext = param1
+                    speaktextone(param1onetext!!)
                 }
 
                 override fun onAnimationStart(animation: Animation?) {
@@ -113,8 +117,8 @@ class LearnPagerAdapter(var context: Context, var param1: String, var symbol: St
 
                 override fun onAnimationEnd(animation: Animation?) {
 
-                    onetext = speak
-                    speaktextone(3000)
+                    symbolonetext = speak
+                    speaktextone(symbolonetext!!)
                 }
 
                 override fun onAnimationStart(animation: Animation?) {
@@ -130,8 +134,8 @@ class LearnPagerAdapter(var context: Context, var param1: String, var symbol: St
 
                 override fun onAnimationEnd(animation: Animation?) {
 
-                    onetext = param2[0].toString()
-                    speaktextone(6000)
+                    param2onetext = param2[0].toString()
+                    speaktextone(param2onetext!!)
                 }
 
                 override fun onAnimationStart(animation: Animation?) {
@@ -145,8 +149,8 @@ class LearnPagerAdapter(var context: Context, var param1: String, var symbol: St
                 }
 
                 override fun onAnimationEnd(animation: Animation?) {
-                    onetext = equal
-                    speaktextone(9000)
+                    equalonetext = equal
+                    speaktextone(equalonetext!!)
                 }
 
                 override fun onAnimationStart(animation: Animation?) {
@@ -163,16 +167,18 @@ class LearnPagerAdapter(var context: Context, var param1: String, var symbol: St
 
                 override fun onAnimationEnd(animation: Animation?) {
 
-                    onetext = result.toString()
-                    Log.i("getpredataresult", onetext)
-                    speaktextone(12000)
+                    resultonetext = result.toString()
+                    speaktextone(resultonetext!!)
                 }
 
                 override fun onAnimationStart(animation: Animation?) {
                 }
 
             })
-
+        btn_speak?.setOnClickListener(View.OnClickListener {
+            var btntext = param1onetext + symbolonetext + param2onetext + equalonetext + resultonetext
+            tts!!.speak(btntext, TextToSpeech.QUEUE_FLUSH, null)
+        })
 
         }else{
 
@@ -209,86 +215,22 @@ class LearnPagerAdapter(var context: Context, var param1: String, var symbol: St
             tv_result?.text = numresult
         }
 
-/*
-        btn_speak?.setOnClickListener(View.OnClickListener {
-            var btntext = tv_1st!!.text.toString() + speak + tv_2nd!!.text.toString() + tv_equal!!.text.toString() + tv_result!!.text.toString()
-            tts!!.speak(btntext, TextToSpeech.QUEUE_FLUSH, null)
-        })
-*/
-
         (container as ViewPager).addView(row)
 
         return row
 
     }
 
-    fun speaktextone(duration: Int) {
+    fun speaktextone(onetext: String) {
         tts!!.speak(onetext, TextToSpeech.QUEUE_FLUSH, null)
-/*
-        Thread(Runnable {
-            Thread.sleep(duration.toLong())
-
-
-                Log.i("mythread11",""+onetext)
-
-        }).start()
-*/
-
-//        tts!!.speak(mytext, TextToSpeech.QUEUE_FLUSH, null)
     }
 
-    /*
-        fun getparam1() {
-
-
-
-            */
-/*   tv_2nd?.text = param2[position].toString()
-           Log.i("playsound5444",param2.get(position).toString())
-           //        tts!!.speak(param2[position].toString(), TextToSpeech.QUEUE_FLUSH, null)
-           tv_symbol?.text = symbol
-           tv_equal?.text = equal
-           tv_result?.text = numresult
-           Thread(Runnable {
-               Thread.sleep(1000)
-               tv_1st?.post(Runnable {
-                   tv_1st?.text = param1
-                   onetext=tv_1st?.text.toString()
-                   tv_2nd?.startAnimation(animation)
-   //                tts!!.speak(onetext, TextToSpeech.QUEUE_FLUSH, null)
-                   Log.i("mythread11",""+onetext)
-   //             animation.setAnimationListener(this)
-               })
-
-           }).start()*//*
-
-    }
-*/
-/*
- fun viewgetting(){
-
-     tv_symbol?.text = symbol
-
-     tv_symbol?.startAnimation(animation)
-//     tts!!.speak(onetext, TextToSpeech.QUEUE_FLUSH, null)
-     Thread(Runnable {
-         Thread.sleep(1000)
-         tv_symbol?.post(Runnable {
-             tts!!.speak(onetext, TextToSpeech.QUEUE_FLUSH, null)
-             Log.i("mythread11",""+onetext)
-//             animation.setAnimationListener(this)
-         })
-
-     }).start()
-
- }
-*/
     override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
 
         (container as ViewPager).removeView(`object` as View)
 
         if (tts != null) {
-            Log.i("PlaySeries", "In pause play series");
+            Log.i("PlaySeries", "In pause play series")
             this.tts?.stop()
             this.tts?.shutdown()
         }
@@ -296,30 +238,12 @@ class LearnPagerAdapter(var context: Context, var param1: String, var symbol: St
 
     }
 
-    /* override fun onAnimationRepeat(animation: Animation?) {
-
-     }
-
-     override fun onAnimationEnd(animation: Animation?) {
-         Log.i("thread1145",""+tv_2nd?.text.toString())
-   *//*      var index=tv_2nd?.text.toString()
-        tts!!.speak(index.toString(), TextToSpeech.QUEUE_FLUSH, null)
-                        Log.i("thread1145",""+index)*//*
-
-//        textspeak("end")
-    }
-
-    override fun onAnimationStart(animation: Animation?) {
-        tts!!.speak(onetext.toString(), TextToSpeech.QUEUE_FLUSH, null)
-
-    }*/
     override fun getItemPosition(`object`: Any?): Int {
-//        tts!!.speak(p.toString(), TextToSpeech.QUEUE_FLUSH, null)
+
         return super.getItemPosition(`object`)
     }
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
-
         return view === `object`
     }
 
