@@ -63,7 +63,7 @@ class LearnPagerAdapter(var context: Context, var param1: String, var symbol: St
         val animationresult = AnimationUtils.loadAnimation(context, R.anim.slide)
 
 
-
+        Log.i("positioaapter",""+position)
         if (position == 0) {
             val value1: Int = param1.toInt()
             val value2: Int = param2[0]

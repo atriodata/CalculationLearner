@@ -77,12 +77,137 @@ class LearnActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         pager.currentItem
         pager.setPageTransformer(false, object : PageTransformer {
           override  fun transformPage(page: View, position: Float) {
+             // Log.i("position99",""+position)
+
+
               if (position <= -1.0f || position >= 1.0f) {
+                  Log.i("position98",""+position)
 
               } else if (position == 0.0f) {
+                  Log.i("position97",""+position)
+                  var param1: TextView = page.findViewById<TextView>(R.id.tv_1st)
+                  if (param1 != null){
+                      /*
+                       param1.setAlpha(1.0f - absPosition * 2)*/
+                      param1.startAnimation(animationparam1)
+                      animationparam1.setAnimationListener(object : Animation.AnimationListener {
+                          override fun onAnimationRepeat(animation: Animation?) {
+                          }
+
+                          override fun onAnimationEnd(animation: Animation?) {
+                              param1onetext=param1.text.toString()
+//                              onetext=param1onetext
+                              tts!!.speak(param1onetext, TextToSpeech.QUEUE_FLUSH, null)
+                          }
+
+                          override fun onAnimationStart(animation: Animation?) {
+                          }
+
+                      })
+                  }
+
+                  var symbol: TextView = page.findViewById<TextView>(R.id.tv_symbol)
+                  if (symbol != null) {
+
+                      symbol?.startAnimation(animationsymbol)
+                      animationsymbol.startOffset = (3000)
+                      animationsymbol.setAnimationListener(object : Animation.AnimationListener {
+                          override fun onAnimationRepeat(animation: Animation?) {
+                          }
+
+                          override fun onAnimationEnd(animation: Animation?) {
+                              symbolonetext=symbol.text.toString()
+                              if (symbolonetext.equals("\u00D7")) {
+                                  symbolonetext = "into"
+                              }
+                              if (symbolonetext.equals("\u00F7")) {
+                                  symbolonetext = "Divided By"
+                              }
+                              if (symbolonetext.equals("-")) {
+                                  symbolonetext = "Minus"
+                              }
+                              tts!!.speak(symbolonetext, TextToSpeech.QUEUE_FLUSH, null)
+                          }
+
+                          override fun onAnimationStart(animation: Animation?) {
+                          }
+
+                      })
+                  }
+
+                  var param2a: TextView = page.findViewById<TextView>(R.id.tv_2st)
+                  if (param2a != null) {
+                      param2a?.startAnimation(animationparam2)
+
+                      animationparam2.startOffset = (6000)
+                      animationparam2.setAnimationListener(object : Animation.AnimationListener {
+                          override fun onAnimationRepeat(animation: Animation?) {
+                          }
+
+                          override fun onAnimationEnd(animation: Animation?) {
+
+                              param2onetext = param2a.text.toString()
+                              tts!!.speak(param2onetext, TextToSpeech.QUEUE_FLUSH, null)
+                          }
+
+                          override fun onAnimationStart(animation: Animation?) {
+                          }
+
+                      })
+
+                  }
+                  var equal: TextView = page.findViewById<TextView>(R.id.tv_equals)
+
+                  if (equal != null) {
+                      equal?.startAnimation(animationequal)
+
+                      animationequal.startOffset = (9000)
+                      animationequal.setAnimationListener(object : Animation.AnimationListener {
+                          override fun onAnimationRepeat(animation: Animation?) {
+                          }
+
+                          override fun onAnimationEnd(animation: Animation?) {
+
+                              equalonetext = equal.text.toString()
+                              tts!!.speak(equalonetext, TextToSpeech.QUEUE_FLUSH, null)
+                          }
+
+                          override fun onAnimationStart(animation: Animation?) {
+                          }
+
+                      })
+
+                  }
+                  var result: TextView = page.findViewById<TextView>(R.id.tv_result)
+                  if (result != null) {
+                      result?.startAnimation(animationresult)
+
+                      animationresult.startOffset = (12000)
+                      animationresult.setAnimationListener(object : Animation.AnimationListener {
+                          override fun onAnimationRepeat(animation: Animation?) {
+                          }
+
+                          override fun onAnimationEnd(animation: Animation?) {
+
+                              resultonetext = result.text.toString()
+                              tts!!.speak(resultonetext, TextToSpeech.QUEUE_FLUSH, null)
+                          }
+
+                          override fun onAnimationStart(animation: Animation?) {
+                          }
+
+                      })
+
+                  }
+                  var btn_speak: Button = page.findViewById<Button>(R.id.btn_speak)
+                  btn_speak?.setOnClickListener(View.OnClickListener {
+                      var btntext = param1onetext + symbolonetext + param2onetext + equalonetext + resultonetext
+                      tts!!.speak(btntext, TextToSpeech.QUEUE_FLUSH, null)
+                  })
 
               } else {
 
+                  Log.i("position96",""+position)
                   var param1: TextView = page.findViewById<TextView>(R.id.tv_1st)
                   if (param1 != null){
                      /*
@@ -208,6 +333,7 @@ class LearnActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
               }
           }
+
           })
 
     }

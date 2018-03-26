@@ -164,24 +164,32 @@ class PractiseActivity : AppCompatActivity() {
 
             override fun onDataChange(p0: DataSnapshot?) {
                 Log.i("Practice1111",""+p0?.childrenCount)
+                Log.i("Practice127",""+p0?.getValue())
+                if (p0?.getValue()!=null){
+                    Log.i("Practice11",""+p0.toString())
+                    var practice =  p0?.getValue(Practice::class.java)
+                    var question =practice?.Question
+                    var optionA =practice?.optionA
+                    var optionB =practice?.optionB
+                    var optionC =practice?.optionC
+                    var optionD =practice?.optionD
+                    corrctans =practice?.correctAnswer
+
+
+                    /* Log.i("Practice11",""+practice?.Question)
+                     Log.i("Practice11",""+practice?.optionA)
+                     Log.i("Practice11",""+practice?.optionB)
+                     Log.i("Practice11",""+practice?.optionD)
+                     Log.i("Practice11",""+practice?.correctAnswer)*/
+                    setData(question,optionA,optionB,optionC,optionD,value)
+
+                }else{
+
+                }
+
                 //
                 // var subkey = p0?.getKey()
-                Log.i("Practice11",""+p0.toString())
-                var practice =  p0?.getValue(Practice::class.java)
-                var question =practice?.Question
-                var optionA =practice?.optionA
-                var optionB =practice?.optionB
-                var optionC =practice?.optionC
-                var optionD =practice?.optionD
-                corrctans =practice?.correctAnswer
 
-
-               /* Log.i("Practice11",""+practice?.Question)
-                Log.i("Practice11",""+practice?.optionA)
-                Log.i("Practice11",""+practice?.optionB)
-                Log.i("Practice11",""+practice?.optionD)
-                Log.i("Practice11",""+practice?.correctAnswer)*/
-                setData(question,optionA,optionB,optionC,optionD,value)
 
             }
 
