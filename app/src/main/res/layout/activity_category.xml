@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.atrio.calculationlearner.CategoryActivity">
 
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
@@ -20,89 +24,146 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/series_card"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        />
 
-    <!--  <include
-          android:id="@+id/series_card"
-          layout="@layout/card_layout"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginBottom="8dp"
-          app:layout_constraintBottom_toTopOf="@+id/textView2"
-          app:layout_constraintEnd_toEndOf="parent"
-          app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@id/textView" />-->
+
     <android.support.v7.widget.CardView
         android:id="@+id/series_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="10dp"
-        app:cardElevation="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView">
+        app:cardElevation="15dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <Button
-                android:id="@+id/btn_adds"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/white"
-                android:background="@drawable/button_bg"
-                android:drawableRight="@drawable/addition"
-                android:paddingRight="15dp"
-                android:text="addition" />
+                android:orientation="horizontal"
+                android:layout_weight="2">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <Button
+                        android:id="@+id/btn_adds"
+                        android:layout_width="100dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="8dp"
+                        android:drawableTop="@drawable/plus"
+                        android:drawablePadding="3dp"
+                        android:textSize="10sp"
+                         android:text="Addition"
+                        android:textColor="@color/white" />
+                    
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+                    <Button
+                        android:id="@+id/btn_subs"
+                        android:layout_width="100dp"
+                        android:layout_height="120dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/white"
+                        android:drawablePadding="3dp"
+                        android:layout_gravity="center_horizontal"
+                        android:drawableTop="@drawable/remove"
+                        android:text="subtraction"
+                        />
 
-            <Button
-                android:id="@+id/btn_subs"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Substraction"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorAccent"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="1dp"/>
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/white"
-                android:background="@drawable/button_bg"
-                android:drawableRight="@drawable/subtract"
-                android:paddingRight="15dp"
-                android:text="subtraction" />
+                android:layout_marginTop="5dp"
+                android:layout_weight="2"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
+                    <Button
+                        android:id="@+id/btn_muls"
+                        android:layout_width="100dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="8dp"
+                        android:drawableTop="@drawable/multisy"
+                        android:drawablePadding="3dp"
+                        android:textSize="10dp"
+                        android:textColor="@color/white" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Multiplicaion"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorAccent"
+                    android:layout_gravity="center_horizontal"
+                    android:padding="2dp"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="1">
 
-            <Button
-                android:id="@+id/btn_muls"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/button_bg"
-                android:drawableRight="@drawable/multiplication"
-                android:paddingRight="15dp"
-                android:text="multiplication" />
+                    <Button
+                        android:id="@+id/btn_divs"
+                        android:layout_width="100dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="8dp"
+                        android:drawableTop="@drawable/division"
+                        android:drawablePadding="3dp"
+                        android:textSize="10dp"
+                        android:textColor="@color/white" />
 
-            <Button
-                android:id="@+id/btn_divs"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/white"
-                android:background="@drawable/button_bg"
-                android:drawableRight="@drawable/division"
-                android:paddingRight="15dp"
-                android:text="division" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Division"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorAccent"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="2dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+
+
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
@@ -113,15 +174,12 @@
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
         android:text="RANDOM"
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/random_card"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/series_card" />
+        android:textStyle="bold" />
 
     <!--  <include
           android:id="@+id/random_card"
@@ -139,44 +197,74 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="10dp"
-        app:cardElevation="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView2">
+        app:cardElevation="15dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <Button
-                android:id="@+id/btn_addr"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:textColor="@color/white"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/button_bg"
-                android:drawableRight="@drawable/addition"
-                android:paddingRight="15dp"
-                android:text="addition" />
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+               <!--     <Button
 
-            <Button
-                android:id="@+id/btn_subr"
-                android:textColor="@color/white"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/button_bg"
-                android:drawableRight="@drawable/subtract"
-                android:paddingRight="15dp"
-                android:text="subtraction" />
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:textColor="@color/white"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="8dp"
 
-            <Button
+                        android:paddingRight="15dp"
+                       />-->
+                    <Button
+                        android:id="@+id/btn_addr"
+                        android:layout_width="100dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="8dp"
+                        android:drawableTop="@drawable/division"
+                        android:drawablePadding="3dp"
+                        android:text="addition"
+                        android:textSize="10dp"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Addition"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorAccent"
+                        android:layout_gravity="center_horizontal"
+                        android:padding="2dp"/>
+                </LinearLayout>
+
+
+                <Button
+                    android:id="@+id/btn_subr"
+                    android:textColor="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/button_bg"
+                    android:drawableRight="@drawable/subtract"
+                    android:paddingRight="15dp"
+                    android:text="subtraction" />
+
+
+            </LinearLayout>
+
+                     <Button
                 android:id="@+id/btn_mulr"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -185,8 +273,6 @@
                 android:layout_marginTop="8dp"
                 android:background="@drawable/button_bg"
                 android:textColor="@color/white"
-                android:drawableRight="@drawable/multiplication"
-                android:paddingRight="15dp"
                 android:text="multiplication" />
 
             <Button
@@ -198,10 +284,11 @@
                 android:layout_marginTop="8dp"
               android:textColor="@color/white"
                 android:background="@drawable/button_bg"
-                android:drawableRight="@drawable/division"
+
                 android:paddingRight="15dp"
                 android:text="division" />
         </LinearLayout>
     </android.support.v7.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
 
-</android.support.constraint.ConstraintLayout>
