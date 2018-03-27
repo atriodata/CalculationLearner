@@ -87,8 +87,7 @@ class LearnActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                   Log.i("position97",""+position)
                   var param1: TextView = page.findViewById<TextView>(R.id.tv_1st)
                   if (param1 != null){
-                      /*
-                       param1.setAlpha(1.0f - absPosition * 2)*/
+
                       param1.startAnimation(animationparam1)
                       animationparam1.setAnimationListener(object : Animation.AnimationListener {
                           override fun onAnimationRepeat(animation: Animation?) {
@@ -96,7 +95,6 @@ class LearnActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
                           override fun onAnimationEnd(animation: Animation?) {
                               param1onetext=param1.text.toString()
-//                              onetext=param1onetext
                               tts!!.speak(param1onetext, TextToSpeech.QUEUE_FLUSH, null)
                           }
 
@@ -118,7 +116,7 @@ class LearnActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                           override fun onAnimationEnd(animation: Animation?) {
                               symbolonetext=symbol.text.toString()
                               if (symbolonetext.equals("\u00D7")) {
-                                  symbolonetext = "into"
+                                  symbolonetext = "multiply by"
                               }
                               if (symbolonetext.equals("\u00F7")) {
                                   symbolonetext = "Divided By"
@@ -241,7 +239,7 @@ class LearnActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                           override fun onAnimationEnd(animation: Animation?) {
                               symbolonetext=symbol.text.toString()
                               if (symbolonetext.equals("\u00D7")) {
-                                  symbolonetext = "into"
+                                  symbolonetext = "multiply by"
                               }
                               if (symbolonetext.equals("\u00F7")) {
                                   symbolonetext = "Divided By"
