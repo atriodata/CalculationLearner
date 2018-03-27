@@ -23,7 +23,6 @@ import java.util.*
 class LearnPagerAdapter(var context: Context, var param1: String, var symbol: String, var param2: IntArray, val equal: String, var numresult: String) : PagerAdapter(), TextToSpeech.OnInitListener {
     var tts: TextToSpeech? = null
     var speak: String? = null
-//    var onetext: String? = null
     var param1onetext:String?=null
     var symbolonetext:String?=null
     var param2onetext:String?=null
@@ -65,33 +64,37 @@ class LearnPagerAdapter(var context: Context, var param1: String, var symbol: St
 
         Log.i("positioaapter",""+position)
         if (position == 0) {
-            val value1: Int = param1.toInt()
-            val value2: Int = param2[0]
-            Log.i("myvalue",value2.toString())
-            var result = 0
-            if (symbol.equals("+")) {
-                result = value1 + value2
-                Log.i("myvalue45",result.toString())
-                speak = "Pluse"
-
-            } else if (symbol.equals("-")) {
-                result = value2 - value1
-                speak = "Minus"
-
-            } else if (symbol.equals("\u00D7")) {
-                speak = "into"
-                result = value1 * value2
-            } else if (symbol.equals("\u00F7")) {
-                result = value2 / value1
-                speak = "Divided By"
-
-            }
-            numresult = result.toString()
 
             tv_1st?.text = param1
             tv_symbol?.text = symbol
             tv_2nd?.text = param2[position].toString()
             tv_equal?.text = equal
+
+            val value1: Int = param1.toInt()
+            val value2: Int = param2[0]
+
+            var result = 0
+            if (symbol.equals("+")) {
+                result = value1 + value2
+                speak = "Pluse"
+
+            } else if (symbol.equals("-")) {
+                tv_1st?.text = param2[position].toString()
+                tv_2nd?.text = param1
+                result = value2 - value1
+                speak = "Minus"
+
+            } else if (symbol.equals("\u00D7")) {
+                speak = "multiply by"
+                result = value1 * value2
+            } else if (symbol.equals("\u00F7")) {
+                tv_1st?.text = param2[position].toString()
+                tv_2nd?.text = param1
+                result = value2 / value1
+                speak = "Divided By"
+
+            }
+            numresult = result.toString()
             tv_result?.text = numresult
 
             tv_1st?.startAnimation(animationparam1)
@@ -181,6 +184,11 @@ class LearnPagerAdapter(var context: Context, var param1: String, var symbol: St
         })
 
         }else{
+            tv_1st?.text = param1
+            tv_symbol?.text = symbol
+            tv_2nd?.text = param2[position].toString()
+            tv_equal?.text = equal
+
 
             val value1: Int = param1.toInt()
             val value2: Int = param2[position]
@@ -197,7 +205,7 @@ class LearnPagerAdapter(var context: Context, var param1: String, var symbol: St
                 speak = "Minus"
 
             } else if (symbol.equals("\u00D7")) {
-                speak = "into"
+                speak = "multiply by"
                 result = value1 * value2
             } else if (symbol.equals("\u00F7")) {
                 tv_1st?.text = param2[position].toString()
@@ -207,11 +215,6 @@ class LearnPagerAdapter(var context: Context, var param1: String, var symbol: St
 
             }
             numresult = result.toString()
-
-            tv_1st?.text = param1
-            tv_symbol?.text = symbol
-            tv_2nd?.text = param2[position].toString()
-            tv_equal?.text = equal
             tv_result?.text = numresult
         }
 
@@ -234,8 +237,6 @@ class LearnPagerAdapter(var context: Context, var param1: String, var symbol: St
             this.tts?.stop()
             this.tts?.shutdown()
         }
-//        super.destroyItem(container, position, `object`)
-
     }
 
     override fun getItemPosition(`object`: Any?): Int {
