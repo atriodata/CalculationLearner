@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/num_btn">
+    android:background="@drawable/calc">
 
     <LinearLayout
         android:id="@+id/ll1"
@@ -31,7 +31,7 @@
             android:textSize="75sp"
             android:text=""
             android:textAlignment="center"
-            android:textColor="@color/white" />
+            android:textColor="@color/colorPrimaryDark" />
         <TextView
             android:id="@+id/tv_symbol"
             android:layout_width="wrap_content"
@@ -42,7 +42,7 @@
             android:textSize="75sp"
             android:text=""
             android:textAlignment="center"
-            android:textColor="@color/white"/>
+            android:textColor="@color/colorPrimaryDark"/>
 
         <TextView
             android:id="@+id/tv_2st"
@@ -54,7 +54,7 @@
             android:textSize="75sp"
             android:text=""
             android:textAlignment="center"
-            android:textColor="@color/white"/>
+            android:textColor="@color/colorPrimaryDark"/>
     </LinearLayout>
 
     <LinearLayout
@@ -81,7 +81,7 @@
             android:textStyle="bold"
             android:textSize="75sp"
             android:textAlignment="center"
-            android:textColor="@color/white"/>
+            android:textColor="@color/colorPrimaryDark"/>
 
         <TextView
             android:id="@+id/tv_result"
@@ -92,7 +92,7 @@
             android:textStyle="bold"
             android:textSize="75sp"
             android:textAlignment="center"
-            android:textColor="@color/white" />
+            android:textColor="@color/colorPrimaryDark" />
 
     </LinearLayout>
 
