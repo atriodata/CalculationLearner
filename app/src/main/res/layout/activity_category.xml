@@ -58,7 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
-                android:background="@color/white"
+                android:background="@null"
                 android:textSize="15sp"
                 android:layout_weight="1"
                 android:drawableTop="@drawable/add_icon"
@@ -76,7 +76,7 @@
                 android:drawablePadding="15dp"
                 android:paddingTop="10dp"
                 android:textColor="@color/colorPrimary"
-                android:background="@color/white"
+                android:background="@null"
                 android:textSize="15sp"
                 android:drawableTop="@drawable/substract_icon"
                 android:text="Subtraction" />
@@ -98,7 +98,7 @@
                 android:layout_margin="15dp"
                 android:textSize="15sp"
                 android:textColor="@color/colorPrimary"
-                android:background="@color/white"
+                android:background="@null"
                 android:drawableTop="@drawable/multiply_icon"
                 android:text="multiplication"/>
 
@@ -111,7 +111,7 @@
                 android:drawablePadding="15dp"
                 android:paddingTop="10dp"
                 android:textColor="@color/colorPrimary"
-                android:background="@color/white"
+                android:background="@null"
                 android:textSize="15sp"
                 android:drawableTop="@drawable/division_icon"
                 android:text="Division" />
@@ -164,7 +164,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorPrimary"
-                    android:background="@color/white"
+                    android:background="@null"
                     android:textSize="15sp"
                     android:layout_weight="1"
                     android:drawableTop="@drawable/add_icon"
@@ -182,7 +182,7 @@
                     android:drawablePadding="15dp"
                     android:paddingTop="10dp"
                     android:textColor="@color/colorPrimary"
-                    android:background="@color/white"
+                    android:background="@null"
                     android:textSize="15sp"
                     android:drawableTop="@drawable/substract_icon"
                     android:text="Subtraction" />
@@ -204,7 +204,7 @@
                     android:layout_margin="15dp"
                     android:textSize="15sp"
                     android:textColor="@color/colorPrimary"
-                    android:background="@color/white"
+                    android:background="@null"
                     android:drawableTop="@drawable/multiply_icon"
                     android:text="multiplication"/>
 
@@ -217,7 +217,7 @@
                     android:drawablePadding="15dp"
                     android:paddingTop="10dp"
                     android:textColor="@color/colorPrimary"
-                    android:background="@color/white"
+                    android:background="@null"
                     android:textSize="15sp"
                     android:drawableTop="@drawable/division_icon"
                     android:text="Division" />

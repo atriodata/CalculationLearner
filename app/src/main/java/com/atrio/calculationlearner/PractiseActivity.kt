@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ProgressBar
 import com.atrio.calculationlearner.model.Practice
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_practise.*
@@ -16,7 +17,7 @@ class PractiseActivity : AppCompatActivity() {
     var whtsoptionvalue:String? = null
     var data_number : String? = null
     var data_number1 : String? = null
-
+    var bar :ProgressBar? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_practise)
@@ -155,6 +156,7 @@ class PractiseActivity : AppCompatActivity() {
     private fun getData(qno: String?, value: String?) {
         val query_catlist = rootRef.child("QuesttionList").child(value).child(qno).orderByKey()
         Log.i("query_catlist33",""+query_catlist.ref.toString())
+
         query_catlist.addListenerForSingleValueEvent(object: ValueEventListener{
             override fun onCancelled(p0: DatabaseError?) {
 
