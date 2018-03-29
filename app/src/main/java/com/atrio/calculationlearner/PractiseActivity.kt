@@ -17,11 +17,13 @@ class PractiseActivity : AppCompatActivity() {
     var whtsoptionvalue:String? = null
     var data_number : String? = null
     var data_number1 : String? = null
-    var bar :ProgressBar? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_practise)
         rootRef = FirebaseDatabase.getInstance().reference
+        progressBar_cyclic.visibility = View.VISIBLE
+
 
         whtsoptionvalue = intent.getStringExtra("categoryvalue")
 
@@ -30,7 +32,7 @@ class PractiseActivity : AppCompatActivity() {
 
                 Log.i("qno11",""+qno)
                 getData(qno,whtsoptionvalue)
-        bt_nxt.isEnabled = false
+                bt_nxt.isEnabled = false
 
         bt_nxt.setOnClickListener(View.OnClickListener {
             radioGroup.clearCheck()
@@ -169,7 +171,7 @@ class PractiseActivity : AppCompatActivity() {
                 Log.i("Practice127",""+p0?.getValue())
                 if (p0?.getValue()!=null){
                     Log.i("Practice11",""+p0.toString())
-                    var practice =  p0?.getValue(Practice::class.java)
+                    val practice =  p0?.getValue(Practice::class.java)
                     var question =practice?.Question
                     var optionA =practice?.optionA
                     var optionB =practice?.optionB
@@ -184,6 +186,7 @@ class PractiseActivity : AppCompatActivity() {
                      Log.i("Practice11",""+practice?.optionD)
                      Log.i("Practice11",""+practice?.correctAnswer)*/
                     setData(question,optionA,optionB,optionC,optionD,value)
+                    progressBar_cyclic.visibility = View.INVISIBLE
 
                 }else{
 
@@ -201,6 +204,14 @@ class PractiseActivity : AppCompatActivity() {
     private fun setData(question: String?, optionA: String?, optionB: String?, optionC: String?, optionD: String?, value: String?) {
       //  tv_ques.setText(question)
         Log.i("question11",""+question)
+        bt_number.visibility = View.VISIBLE
+        bt_symbol.visibility = View.VISIBLE
+        bt_number1.visibility = View.VISIBLE
+        bt_equal.visibility = View.VISIBLE
+        radioGroup.visibility = View.VISIBLE
+        rg_2.visibility = View.VISIBLE
+        bt_nxt.visibility = View.VISIBLE
+
 
         when(value){
             "Addition"-> {

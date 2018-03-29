@@ -58,10 +58,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/colorPrimary"
-                android:background="@null"
                 android:textSize="15sp"
+                android:background="@color/white"
                 android:layout_weight="1"
-                android:drawableTop="@drawable/add_icon"
+                android:drawableTop="@drawable/pluss"
                 android:drawablePadding="15dp"
                 android:paddingTop="10dp"
                 android:layout_margin="15dp"
@@ -75,10 +75,10 @@
                 android:layout_margin="15dp"
                 android:drawablePadding="15dp"
                 android:paddingTop="10dp"
+                android:background="@color/white"
                 android:textColor="@color/colorPrimary"
-                android:background="@null"
                 android:textSize="15sp"
-                android:drawableTop="@drawable/substract_icon"
+                android:drawableTop="@drawable/sub"
                 android:text="Subtraction" />
         </LinearLayout>
         <LinearLayout
@@ -97,9 +97,9 @@
                 android:paddingTop="10dp"
                 android:layout_margin="15dp"
                 android:textSize="15sp"
+                android:background="@color/white"
                 android:textColor="@color/colorPrimary"
-                android:background="@null"
-                android:drawableTop="@drawable/multiply_icon"
+                android:drawableTop="@drawable/new_mul"
                 android:text="multiplication"/>
 
             <Button
@@ -111,9 +111,9 @@
                 android:drawablePadding="15dp"
                 android:paddingTop="10dp"
                 android:textColor="@color/colorPrimary"
-                android:background="@null"
+                android:background="@color/white"
                 android:textSize="15sp"
-                android:drawableTop="@drawable/division_icon"
+                android:drawableTop="@drawable/div"
                 android:text="Division" />
         </LinearLayout>
         </LinearLayout>
@@ -164,10 +164,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorPrimary"
-                    android:background="@null"
+                    android:background="@color/white"
                     android:textSize="15sp"
                     android:layout_weight="1"
-                    android:drawableTop="@drawable/add_icon"
+                    android:drawableTop="@drawable/pluss"
                     android:drawablePadding="15dp"
                     android:paddingTop="10dp"
                     android:layout_margin="15dp"
@@ -182,9 +182,9 @@
                     android:drawablePadding="15dp"
                     android:paddingTop="10dp"
                     android:textColor="@color/colorPrimary"
-                    android:background="@null"
+                    android:background="@color/white"
                     android:textSize="15sp"
-                    android:drawableTop="@drawable/substract_icon"
+                    android:drawableTop="@drawable/sub"
                     android:text="Subtraction" />
             </LinearLayout>
             <LinearLayout
@@ -204,8 +204,8 @@
                     android:layout_margin="15dp"
                     android:textSize="15sp"
                     android:textColor="@color/colorPrimary"
-                    android:background="@null"
-                    android:drawableTop="@drawable/multiply_icon"
+                    android:background="@color/white"
+                    android:drawableTop="@drawable/new_mul"
                     android:text="multiplication"/>
 
                 <Button
@@ -217,9 +217,9 @@
                     android:drawablePadding="15dp"
                     android:paddingTop="10dp"
                     android:textColor="@color/colorPrimary"
-                    android:background="@null"
+                    android:background="@color/white"
                     android:textSize="15sp"
-                    android:drawableTop="@drawable/division_icon"
+                    android:drawableTop="@drawable/div"
                     android:text="Division" />
             </LinearLayout>
         </LinearLayout>
